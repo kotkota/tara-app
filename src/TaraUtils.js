@@ -149,26 +149,31 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
 export function initTexts() {
   return [
     {
-      class: "tithi",
-      category: "Титхи",
-      title: "●●●●●",
-      titleExtra: "◦◦↑",
-      description:
-        "●●●● ●●● ●●●●●●●●●●● ●● ●●●● ●●●●●●● ●●●●●●●● ●● ●●●●● ●●● ●●●● ●● ●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
+      class: "module__wide today",
+      title: new Date().toLocaleString("ru", { dateStyle: "long" }),
+      description: dayTitles,
     },
-    {
-      class: "tarabala",
-      category: "Тара Бала",
-      title: "●●●●●",
-      description: "●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
-    },
-    {
-      class: "nakshatra",
-      category: "Накшатра",
-      title: "●●●●●●●●",
-      titleExtra: "◦◦◦◦",
-      description:
-        "●●●● ●●● ●●●●●●●●●●● ●● ●●●● ●●●●●●● ●●●●●●●● ●● ●●●●● ●●● ●●●● ●● ●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
-    },
+    // {
+    //   class: "tithi",
+    //   category: "Титхи",
+    //   title: "●●●●●",
+    //   titleExtra: "◦◦↑",
+    //   description:
+    //     "●●●● ●●● ●●●●●●●●●●● ●● ●●●● ●●●●●●● ●●●●●●●● ●● ●●●●● ●●● ●●●● ●● ●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
+    // },
+    // {
+    //   class: "tarabala",
+    //   category: "Тара Бала",
+    //   title: "●●●●●",
+    //   description: "●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
+    // },
+    // {
+    //   class: "nakshatra",
+    //   category: "Накшатра",
+    //   title: "●●●●●●●●",
+    //   titleExtra: "◦◦◦◦",
+    //   description:
+    //     "●●●● ●●● ●●●●●●●●●●● ●● ●●●● ●●●●●●● ●●●●●●●● ●● ●●●●● ●●● ●●●● ●● ●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
+    // },
   ];
 }
