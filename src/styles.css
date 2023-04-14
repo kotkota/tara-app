@@ -38,7 +38,7 @@ body {
   background-color: ivory;
   color: var(--accent-color);
   padding-top: 20px;
-  margin-top: -30px;
+  margin-top: -25px;
   z-index: -2;
 }
 .module__wide {
