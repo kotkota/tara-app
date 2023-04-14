@@ -191,7 +191,7 @@ body {
   box-shadow: 0 0 0 1px white, 0 0 5px 2px orange;
 }
 
-/* grain ui */
+/* grain ui https://grain.flodesk.com/ */
 .grn-context {
   --grn-font-global: var(--base-font);
 }
@@ -211,30 +211,3 @@ body {
   box-shadow: unset !important;
   margin: -12px;
 }
-
-/* stuck weekdays 
-.fc {
-  background: var(--fc-page-bg-color);
-  position: relative;
-}
-.fc-multimonth-header-table {
-  display: none;
-}
-.fc-col-header-cell.fc-day {
-  vertical-align: bottom;
-}
-.fc > .fc-multimonth-header-table {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  background: white;
-  display: table;
-  height: 6em;
-  border-radius: 5px;
-}
-.fc .fc-multimonth-singlecol .fc-multimonth-header {
-  background: unset;
-}
-/* end */
