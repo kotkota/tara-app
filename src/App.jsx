@@ -1,42 +1,41 @@
-import './styles.css'
+import "./styles.css";
 
-import React, { useState, useEffect } from 'react'
-import FullCalendar from '@fullcalendar/react'
-import Info from './Info'
-// import Meow from './Meow'
-import * as t from './TaraUtils'
+import React, { useState, useEffect } from "react";
+import FullCalendar from "@fullcalendar/react";
+import Info from "./Info";
+import * as t from "./TaraUtils";
 
 function App() {
-  const [texts, setTexts] = useState(() => t.initTexts())
+  const [texts, setTexts] = useState(() => t.initTexts());
 
   useEffect(() => {
-    t.getDayInfo(new Date().getTime(), setTexts)
-  }, [])
+    t.getDayInfo(new Date().getTime(), setTexts);
+  }, []);
 
   let options = {
     ...t.calendarOptions,
     eventClick: (eventInfo) => {
       // console.log(eventInfo)
-      console.log(eventInfo.event)
-      t.getDayInfo(eventInfo.event.startStr, setTexts)
+      // console.log(eventInfo.event)
+      t.getDayInfo(eventInfo.event.startStr, setTexts);
     },
     viewDidMount: (view) => {
-      console.log(view)
+      // console.log(view)
       // t.getDayInfo(new Date().getTime(), setTexts)
     },
     dateClick: (info) => {
-      console.log(info)
-      t.getDayInfo(info.dateStr, setTexts)
+      // console.log(info)
+      t.getDayInfo(info.dateStr, setTexts);
       // info.dayEl.style.backgroundColor = 'ghostwhite'
-    }
-  }
+    },
+  };
 
   return (
     <>
       <FullCalendar {...options} />
       <Info texts={texts} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
