@@ -183,7 +183,7 @@ export const events = [
     classNames: "solstice"
   },
   {
-    title: "РавноденствиеРавноденствие",
+    title: "Равноденствие",
     description:
       "This is the date when night and day are most nearly the same length. If you live in the northern hemisphere, happy first day of spring! In the southern hemisphere, the vernal equinox corresponds to the first day of fall.",
     start: "2023-03-20T15:24:00-06:00",
@@ -191,7 +191,7 @@ export const events = [
     classNames: "equinox"
   },
   {
-    title: "РавноденствиеРавноденствие",
+    title: "Равноденствие",
     description:
       "The Sun will beam down directly on the equator giving us just about equal amounts of day and night in most parts of the world. North of the equator, this is your Autumnal Equinox. If you live south of the equator, this is your Spring Equinox.\n\nAlso, try balancing an egg on its end! Whether or not you succeed has nothing to do with the Equinox, but it's still a fun game to try on any day of the year. :)",
     start: "2023-09-24T00:50:00-06:00",
