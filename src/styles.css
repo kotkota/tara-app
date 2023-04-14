@@ -33,7 +33,6 @@ body {
   border-radius: 6px;
   padding: 5px 10px 5px;
   background: rgba(255, 255, 255, 0.02);
-  transition: height .2s ease-out;
 }
 .today {
   background-color: ivory;
