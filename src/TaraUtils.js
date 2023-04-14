@@ -5,7 +5,8 @@ import { nakshatraByNum } from "./nakshatras";
 
 function getCurrentTime(time_ms = new Date().getTime()) {
   const time = new Date(time_ms);
-  const hour = time.getHours();
+  // const hour = time.getHours();
+  const hour = 12;
   const min = time.getMinutes();
   const day = time.getDate();
   const month = time.getMonth() + 1; // Добавляем 1, т.к. getMonth() возвращает индекс месяца (0-11)
@@ -114,9 +115,13 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
           category: "Титхи",
           title: data.data.tithi.details.special.split(" ")[0],
           titleExtra:
-            data.data.tithi.details.tithi_number < 15
+            data.data.tithi.details.tithi_number < 16
               ? `${data.data.tithi.details.tithi_number}↑`
-              : `${data.data.tithi.details.tithi_number - 15}↓`,
+              : // : data.data.tithi.details.tithi_number == 15
+                // ? `${data.data.tithi.details.tithi_number}🌕`
+                // : data.data.tithi.details.tithi_number == 30
+                // ? `${data.data.tithi.details.tithi_number}🌑`
+                `${data.data.tithi.details.tithi_number - 15}↓`,
           description: data.data.tithi.details.summary,
           ends: msToDate(data.data.tithi.end_time_ms),
         },
