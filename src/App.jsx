@@ -24,7 +24,7 @@ function App() {
       // t.getDayInfo(new Date().getTime(), setTexts)
     },
     dateClick: (info) => {
-      // console.log(info)
+      console.log(info.dateStr);
       t.getDayInfo(info.dateStr, setTexts);
       // info.dayEl.style.backgroundColor = 'ghostwhite'
     },
