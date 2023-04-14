@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Unbounded:wght@200;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Unbounded:wght@200;400;600&display=swap");
 
 :root {
   --accent-color: darkslategray;
@@ -116,7 +116,6 @@ body {
   height: calc(11em + 180px);
   box-shadow: 0 5px 20px -10px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
-  margin-bottom: 1vw;
 }
 .fc table {
   height: auto !important;
@@ -181,7 +180,7 @@ body {
 }
 .fc .fc-daygrid-day.fc-day-today:before {
   background-color: var(--fc-today-bg-color);
-  content: '';
+  content: "";
   inset: -2px 3px 3px;
   border-radius: 4px;
   position: absolute;
