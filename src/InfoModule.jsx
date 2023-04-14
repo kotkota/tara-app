@@ -24,6 +24,7 @@ export default function InfoModule({ text }) {
       {text.ends && <p className="module_time">до {text.ends}</p>}
       <p className="module_description">{text.description}</p>
       <Modal
+        cardPadding="l"
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         title={text.category}
