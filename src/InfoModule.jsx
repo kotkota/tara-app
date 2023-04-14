@@ -1,7 +1,7 @@
 import "./styles.css";
 import "@flodesk/grain/es/styles/base.css";
 import React from "react";
-import { Arrange, Modal, IconButton, IconInfo } from "@flodesk/grain";
+import { Arrange, Modal, Icon, IconButton, IconInfo } from "@flodesk/grain";
 import { useState } from "react";
 
 export default function InfoModule({ text }) {
@@ -13,7 +13,7 @@ export default function InfoModule({ text }) {
         <Arrange justifyContent="space-between">
           <h5 className="module_category">{text.category}</h5>
           <IconButton
-            icon={<IconInfo size="s" color="darkseagreen" />}
+            icon={<IconInfo color="darkseagreen" />}
             onClick={() => setIsOpen(true)}
           />
         </Arrange>

@@ -25,7 +25,7 @@ body {
   width: clamp(280px, 100%, 480px);
   flex-flow: row wrap;
   align-items: stretch;
-  gap: max(10px, 1vw);
+  gap: 10px;
 }
 .module {
   flex: 1 1 calc(50% - 20px);
