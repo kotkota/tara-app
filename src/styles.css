@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-  margin: 10px auto;
+  margin: auto;
   display: flex;
   width: clamp(280px, 100%, 480px);
   flex-flow: row wrap;
