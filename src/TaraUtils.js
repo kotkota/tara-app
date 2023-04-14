@@ -147,6 +147,7 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
 }
 
 export function initTexts() {
+  const dayTitles = getEventTitlesByDate(new Date().getTime(), events);
   return [
     {
       class: "module__wide today",
