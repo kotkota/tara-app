@@ -27,7 +27,7 @@ export default function InfoModule({ text }) {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         title={text.category}
-        description={"Описание…"}
+        description={text.categoryDescription}
       ></Modal>
     </div>
   );

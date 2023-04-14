@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Unbounded:wght@200;400;600&display=swap");
-
 :root {
   --accent-color: darkseagreen;
   --bg-color: darkslategray;
@@ -194,6 +192,17 @@ body {
 }
 
 /* grain ui */
+.grn-context {
+  --grn-font-global: var(--base-font);
+}
+.grn-context h3 {
+  font-family: var(--display-font);
+}
+.grn-context.grn-context {
+  padding: 20px;
+}
+.grn-context > [class*="Box"] {
+}
 [class*="Arrange"] > * {
   margin: 0;
 }

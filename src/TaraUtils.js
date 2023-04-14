@@ -113,21 +113,19 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
         {
           class: "tithi",
           category: "Титхи",
+          categoryDescription: "Девушка, у вас такие шыкарные титхи…🤤",
           title: data.data.tithi.details.special.split(" ")[0],
           titleExtra:
             data.data.tithi.details.tithi_number < 16
               ? `${data.data.tithi.details.tithi_number}↑`
-              : // : data.data.tithi.details.tithi_number == 15
-                // ? `${data.data.tithi.details.tithi_number}🌕`
-                // : data.data.tithi.details.tithi_number == 30
-                // ? `${data.data.tithi.details.tithi_number}🌑`
-                `${data.data.tithi.details.tithi_number - 15}↓`,
+              : `${data.data.tithi.details.tithi_number - 15}↓`,
           description: data.data.tithi.details.summary,
           ends: msToDate(data.data.tithi.end_time_ms),
         },
         {
           class: "tarabala",
           category: "Тара Бала",
+          categoryDescription: "Кого-кого ты там тарабала!?",
           title: taraBala.name,
           titleExtra: "",
           description: taraBala.description,
@@ -135,6 +133,7 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
         {
           class: "module__wide nakshatra",
           category: "Накшатра",
+          categoryDescription: "Страп-он, фраппе, крапива, пряники…",
           title: nakshatra.name,
           titleExtra: data.data.moon_sign,
           description: data.data.nakshatra.details.summary,
@@ -154,27 +153,5 @@ export function initTexts() {
       title: new Date().toLocaleString("ru", { dateStyle: "long" }),
       description: dayTitles,
     },
-    // {
-    //   class: "tithi",
-    //   category: "Титхи",
-    //   title: "●●●●●",
-    //   titleExtra: "◦◦↑",
-    //   description:
-    //     "●●●● ●●● ●●●●●●●●●●● ●● ●●●● ●●●●●●● ●●●●●●●● ●● ●●●●● ●●● ●●●● ●● ●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
-    // },
-    // {
-    //   class: "tarabala",
-    //   category: "Тара Бала",
-    //   title: "●●●●●",
-    //   description: "●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
-    // },
-    // {
-    //   class: "nakshatra",
-    //   category: "Накшатра",
-    //   title: "●●●●●●●●",
-    //   titleExtra: "◦◦◦◦",
-    //   description:
-    //     "●●●● ●●● ●●●●●●●●●●● ●● ●●●● ●●●●●●● ●●●●●●●● ●● ●●●●● ●●● ●●●● ●● ●●●●● ●●● ●●●●●●●●● ●●●●●●●●",
-    // },
   ];
 }
