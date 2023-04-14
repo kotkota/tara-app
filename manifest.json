@@ -1,0 +1,10 @@
+{
+  "name": "Tara. Cycles and periods",
+  "short_name": "Tara",
+  "theme_color": "#2f4f4f",
+  "background_color": "#2f4f4f",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/"
+}
