@@ -61,19 +61,15 @@ function msToDate(time) {
   });
 }
 
-const IPGEOLOCATION = "7a694e9f76344ed0b130f4c3cdb56144";
+const IPGLKEY = "7a694e9f76344ed0b130f4c3cdb56144";
 
-async function getIPLocation() {
-  const url = `http://ip-api.com/json/`;
+async function getIPLocation(callback) {
+  const url = `https://api.ipgeolocation.io/ipgeo?apiKey=${IPGLKEY}&fields=geo,time_zone`;
   const response = await fetch(url);
   const data = await response.json();
 
   if (data.status == "success") {
-    return {
-      regionName: data.regionName,
-      lat: data.lat,
-      lon: data.lon,
-    };
+    callback(data);
   } else {
     throw new Error("IP not found");
   }
@@ -169,7 +165,7 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
 
 export function initTexts() {
   const dayTitles = getEventTitlesByDate(new Date().getTime(), events);
-  getIPLocation().then((response) => console.log("hello!", response));
+  getIPLocation(console.log);
   return [
     {
       class: "module__wide today",
