@@ -1,4 +1,3 @@
-// import * as KEYS from "dotenv";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
 import { events } from "./events";
@@ -61,6 +60,8 @@ function msToDate(time) {
     month: "numeric",
   });
 }
+
+const IPGEOLOCATION = "7a694e9f76344ed0b130f4c3cdb56144";
 
 async function getIPLocation() {
   const url = `http://ip-api.com/json/`;
