@@ -191,23 +191,25 @@ body {
   box-shadow: 0 0 0 1px white, 0 0 5px 2px orange;
 }
 
-/* grain ui https://grain.flodesk.com/ */
-.grn-context {
-  --grn-font-global: var(--base-font);
-}
-.grn-context h3 {
-  font-family: var(--display-font);
-}
-.grn-context.grn-context {
-  padding: 20px;
-}
-.grn-context > [class*="Box"] {
-}
-[class*="Arrange"] > * {
+/* mui */
+.MuiBox-root h5 {
   margin: 0;
 }
-[class*="Arrange"] > button {
-  background: unset !important;
-  box-shadow: unset !important;
-  margin: -12px;
+[class*="JoyModal-backdrop"] {
+  backdrop-filter: blur(1px) !important;
+}
+[class*="JoyIconButton"] {
+  padding-inline: 0 !important;
+}
+h3,
+h4,
+h5 {
+  --joy-fontFamily-body: var(--display-font);
+}
+:root {
+  --joy-fontFamily-body: var(--base-font);
+  --IconButton-margin: -5px -5px -4px;
+  --IconButton-radius: 50%;
+  --joy-palette-background-backdrop: rgba(0, 0, 0, 0.5);
+  --IconButton-size: 20px;
 }
