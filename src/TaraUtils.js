@@ -1,12 +1,13 @@
+// import * as KEYS from "dotenv";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
 import { events } from "./events";
 import { nakshatraByNum } from "./nakshatras";
 
-function getCurrentTime(time_ms = new Date().getTime()) {
-  const time = new Date(time_ms);
-  // const hour = time.getHours();
-  const hour = 12;
+function getCurrentTime(time_ms = new Date()) {
+  let time = new Date(time_ms);
+  time.setHours(12, 0);
+  const hour = time.getHours();
   const min = time.getMinutes();
   const day = time.getDate();
   const month = time.getMonth() + 1; // Добавляем 1, т.к. getMonth() возвращает индекс месяца (0-11)
@@ -15,6 +16,10 @@ function getCurrentTime(time_ms = new Date().getTime()) {
   const lon = "115.22"; // Долгота вашего местоположения
   const tzone = time.getTimezoneOffset() / -60; // Часовой пояс вашего местоположения
   const city = "Denpasar, ID"; // Город вашего местоположения
+
+  console.log(
+    `Hour: ${hour}, Min: ${min}, Day: ${day}, Month: ${month}, Year: ${year}, Lat: ${lat}, Lon: ${lon}, Tzone: ${tzone}, city: ${city}`
+  );
 
   return JSON.stringify({
     Hour: hour,
@@ -57,6 +62,22 @@ function msToDate(time) {
   });
 }
 
+async function getIPLocation() {
+  const url = `http://ip-api.com/json/`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (data.status == "success") {
+    return {
+      regionName: data.regionName,
+      lat: data.lat,
+      lon: data.lon,
+    };
+  } else {
+    throw new Error("IP not found");
+  }
+}
+
 export function getEventTitlesByDate(date, events) {
   const matchingEvents = events.filter((event) => {
     const eventStartDate = new Date(event.start).toLocaleDateString();
@@ -65,7 +86,7 @@ export function getEventTitlesByDate(date, events) {
     return eventStartDate === requestedDate || eventEndDate === requestedDate;
   });
 
-  return matchingEvents.map((event) => event.title).join("\n");
+  return matchingEvents.map((event) => event.title).join(". ");
 }
 
 export const calendarOptions = {
@@ -147,6 +168,7 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
 
 export function initTexts() {
   const dayTitles = getEventTitlesByDate(new Date().getTime(), events);
+  getIPLocation().then((response) => console.log("hello!", response));
   return [
     {
       class: "module__wide today",
