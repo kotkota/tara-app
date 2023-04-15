@@ -35,7 +35,7 @@ function App() {
     <>
       <FullCalendar {...options} />
       <Info texts={texts} />
-      {/* <SettingsPanel /> */}
+      <SettingsPanel />
     </>
   );
 }

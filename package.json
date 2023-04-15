@@ -5,6 +5,8 @@
   "keywords": [],
   "main": "src/index.jsx",
   "dependencies": {
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
     "@fullcalendar/core": "6.1.5",
     "@fullcalendar/interaction": "6.1.5",
     "@fullcalendar/multimonth": "6.1.0",
@@ -15,6 +17,7 @@
     "@floating-ui/react-dom-interactions": "0.13.3",
     "@flodesk/grain": "*",
     "@headlessui/react": "1.7.3",
+    "@mui/joy": "*",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.0"
