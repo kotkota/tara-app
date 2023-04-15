@@ -14,7 +14,7 @@ function getCurrentTime(time_ms = new Date()) {
   const lat = "-8.65"; // Широта вашего местоположения
   const lon = "115.22"; // Долгота вашего местоположения
   const tzone = time.getTimezoneOffset() / -60; // Часовой пояс вашего местоположения
-  const city = "Denpasar, ID"; // Город вашего местоположения
+  const city = ""; // Город вашего местоположения
 
   console.log(
     `Hour: ${hour}, Min: ${min}, Day: ${day}, Month: ${month}, Year: ${year}, Lat: ${lat}, Lon: ${lon}, Tzone: ${tzone}, city: ${city}`
@@ -59,20 +59,6 @@ function msToDate(time) {
     day: "numeric",
     month: "numeric",
   });
-}
-
-const IPGLKEY = "7a694e9f76344ed0b130f4c3cdb56144";
-
-async function getIPLocation(callback) {
-  const url = `https://api.ipgeolocation.io/ipgeo?apiKey=${IPGLKEY}&fields=geo,time_zone`;
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (data.status == "success") {
-    callback(data);
-  } else {
-    throw new Error("IP not found");
-  }
 }
 
 export function getEventTitlesByDate(date, events) {
@@ -165,7 +151,6 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
 
 export function initTexts() {
   const dayTitles = getEventTitlesByDate(new Date().getTime(), events);
-  getIPLocation(console.log);
   return [
     {
       class: "module__wide today",

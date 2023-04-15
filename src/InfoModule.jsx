@@ -1,7 +1,14 @@
 import "./styles.css";
-import "@flodesk/grain/es/styles/base.css";
+import { ReactComponent as InfoOutlined } from "./info.svg";
 import React from "react";
-import { Arrange, Modal, Icon, IconButton, IconInfo } from "@flodesk/grain";
+import {
+  Box,
+  IconButton,
+  Modal,
+  ModalClose,
+  ModalDialog,
+  Typography,
+} from "@mui/joy";
 import { useState } from "react";
 
 export default function InfoModule({ text }) {
@@ -10,26 +17,29 @@ export default function InfoModule({ text }) {
   return (
     <div className={`module ${text.class}`}>
       {text.category && (
-        <Arrange justifyContent="space-between">
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <h5 className="module_category">{text.category}</h5>
-          <IconButton
-            icon={<IconInfo color="darkseagreen" />}
-            onClick={() => setIsOpen(true)}
-          />
-        </Arrange>
+          <IconButton variant="plain" size="sm" onClick={() => setIsOpen(true)}>
+            <InfoOutlined fill="darkseagreen" />
+          </IconButton>
+        </Box>
       )}
       <h3 className="module_title">
         {text.title} {text.titleExtra && <span>{text.titleExtra}</span>}
       </h3>
       {text.ends && <p className="module_time">до {text.ends}</p>}
       <p className="module_description">{text.description}</p>
-      <Modal
-        cardPadding="l"
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        title={text.category}
-        description={text.categoryDescription}
-      ></Modal>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalDialog
+          size="sm"
+          variant="plain"
+          sx={(theme) => ({ boxShadow: theme.shadow.xs })}
+        >
+          <ModalClose />
+          <Typography level="h5">{text.category}</Typography>
+          <Typography level="body">{text.categoryDescription}</Typography>
+        </ModalDialog>
+      </Modal>
     </div>
   );
 }
