@@ -3,7 +3,7 @@ import "./styles.css";
 import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import Info from "./Info";
-import SettingsPanel from "./SettingsPanel";
+import TopPanel from "./TopPanel";
 import * as t from "./TaraUtils";
 
 function App() {
@@ -33,9 +33,9 @@ function App() {
 
   return (
     <>
+      <TopPanel />
       <FullCalendar {...options} />
       <Info texts={texts} />
-      {/* <SettingsPanel /> */}
     </>
   );
 }
