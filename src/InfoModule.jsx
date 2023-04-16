@@ -1,6 +1,6 @@
 import "./styles.css";
-import { ReactComponent as InfoOutlined } from "./info.svg";
-import React from "react";
+import { ReactComponent as InfoOutlined } from "./icons/info.svg";
+import React, { useState } from "react";
 import {
   Box,
   IconButton,
@@ -9,7 +9,6 @@ import {
   ModalDialog,
   Typography,
 } from "@mui/joy";
-import { useState } from "react";
 
 export default function InfoModule({ text }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +18,12 @@ export default function InfoModule({ text }) {
       {text.category && (
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <h5 className="module_category">{text.category}</h5>
-          <IconButton variant="plain" size="sm" onClick={() => setIsOpen(true)}>
+          <IconButton
+            variant="plain"
+            color="transparent"
+            size="sm"
+            onClick={() => setIsOpen(true)}
+          >
             <InfoOutlined fill="darkseagreen" />
           </IconButton>
         </Box>
