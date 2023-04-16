@@ -46,11 +46,10 @@ export default function SettingsPanel() {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          mt: 1,
           width: 1,
         }}
       >
-        <Logo fill="darkseagreen" width="120" />
+        <Logo fill="white" width="120" style={{ marginLeft: 9 }} />
         <IconButton
           variant="plain"
           sx={{ m: 0 }}
