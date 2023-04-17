@@ -22,12 +22,15 @@ export default function SettingsPanel() {
     JSON.parse(localStorage.getItem("location")) || {}
   );
 
+  console.log(getLocation);
+
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           setLocation({ latitude, longitude });
+          return { latitude, longitude };
           localStorage.setItem(
             "location",
             JSON.stringify({ latitude, longitude })
@@ -108,9 +111,6 @@ export default function SettingsPanel() {
                   Долгота: {location.longitude}
                 </Typography>
               </Box>
-              {/* <Button variant="soft" onClick={getLocation} sx={{ mt: 0.5 }} color="primary" >
-              Обновить
-            </Button> */}
             </Box>
           </Box>
         </ModalDialog>
