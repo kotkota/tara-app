@@ -22,12 +22,15 @@ export default function SettingsPanel() {
     JSON.parse(localStorage.getItem("location")) || {}
   );
 
+  console.log(getLocation);
+
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           setLocation({ latitude, longitude });
+          return { latitude, longitude };
           localStorage.setItem(
             "location",
             JSON.stringify({ latitude, longitude })
@@ -47,9 +50,10 @@ export default function SettingsPanel() {
           display: "flex",
           justifyContent: "space-between",
           width: 1,
+          px: 1,
         }}
       >
-        <Logo fill="white" width="120" style={{ marginLeft: 9 }} />
+        <Logo fill="darkseagreen" width="120" style={{ marginLeft: 1 }} />
         <IconButton
           variant="plain"
           sx={{ m: 0 }}
@@ -62,16 +66,20 @@ export default function SettingsPanel() {
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <ModalDialog
           layout="fullscreen"
-          variant="plain"
+          variant="solid"
+          invertedColors
           size="md"
-          sx={(theme) => ({ boxShadow: theme.shadow.xs })}
+          sx={(theme) => ({
+            boxShadow: theme.shadow.xs,
+            backgroundColor: "darkslategray",
+          })}
         >
           <ModalClose size="lg" sx={{ m: 0 }} color="transparent" />
           <Box display="flex" flexDirection="column" gap={2}>
-            <Typography component="h3" textColor="#0F5D26">
+            <Typography component="h3" textColor="darkseagreen">
               Настройки
             </Typography>
-            <Divider inset="none" />
+            <Divider inset="none" color="primary" />
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography component="h6">Tara Pro</Typography>
               <Switch
@@ -103,9 +111,6 @@ export default function SettingsPanel() {
                   Долгота: {location.longitude}
                 </Typography>
               </Box>
-              {/* <Button variant="soft" onClick={getLocation} sx={{ mt: 0.5 }} color="primary" >
-              Обновить
-            </Button> */}
             </Box>
           </Box>
         </ModalDialog>
