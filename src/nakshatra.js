@@ -1,0 +1,32 @@
+export const nakshatras = [
+  { id: "1", name: "Ашвини", ruler: "Кету", description: "" },
+  { id: "2", name: "Бхарани", ruler: "Венера", description: "" },
+  { id: "3", name: "Криттика", ruler: "Солнце", description: "" },
+  { id: "4", name: "Рохини", ruler: "Луна", description: "" },
+  { id: "5", name: "Мригашира", ruler: "Марс", description: "" },
+  { id: "6", name: "Ардра", ruler: "Раху", description: "" },
+  { id: "7", name: "Пунарвасу", ruler: "Юпитер", description: "" },
+  { id: "8", name: "Пушья", ruler: "Сатурн", description: "" },
+  { id: "9", name: "Ашлеша", ruler: "Меркурий", description: "" },
+  { id: "10", name: "Магха", ruler: "Кету", description: "" },
+  { id: "11", name: "Пурвапхалгуни", ruler: "Венера", description: "" },
+  { id: "12", name: "Уттарапхалгуни", ruler: "Солнце", description: "" },
+  { id: "13", name: "Хаста", ruler: "Луна", description: "" },
+  { id: "14", name: "Читра", ruler: "Марс", description: "" },
+  { id: "15", name: "Свати", ruler: "Раху", description: "" },
+  { id: "16", name: "Вишакха", ruler: "Юпитер", description: "" },
+  { id: "17", name: "Анурадха", ruler: "Сатурн", description: "" },
+  { id: "18", name: "Джйештха", ruler: "Меркурий", description: "" },
+  { id: "19", name: "Мула", ruler: "Кету", description: "" },
+  { id: "20", name: "Пурвашадха", ruler: "Венера", description: "" },
+  { id: "21", name: "Уттарашадха", ruler: "Солнце", description: "" },
+  { id: "22", name: "Шравана", ruler: "Луна", description: "" },
+  { id: "23", name: "Дхаништха", ruler: "Марс", description: "" },
+  { id: "24", name: "Шатабхиша", ruler: "Раху", description: "" },
+  { id: "25", name: "Пурвабхадрапада", ruler: "Юпитер", description: "" },
+  { id: "26", name: "Уттарабхадрапада", ruler: "Сатурн", description: "" },
+  { id: "27", name: "Ревати", ruler: "Меркурий", description: "" },
+];
+export function nakshatraByNum(number) {
+  return nakshatras[number - 1];
+}
