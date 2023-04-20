@@ -1,18 +1,56 @@
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
 import { events } from "./events";
-import { nakshatraByNum } from "./nakshatras";
+import { nakshatraByNum } from "./nakshatra";
+import { tithiByNum } from "./tithi";
+
+export function updateLocation() {
+  let coords = {};
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        coords.latitude = position.coords.latitude.toFixed(2);
+        coords.longitude = position.coords.longitude.toFixed(2);
+        localStorage.setItem("location", JSON.stringify(coords));
+        console.log("getCurrentPosition success", coords);
+      },
+      (err) => console.warn(`ERROR(${err.code}): ${err.message}`),
+      {
+        enableHighAccuracy: false,
+      }
+    );
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+  console.log("update result:", coords);
+  return coords;
+}
+
+export function getLocation() {
+  if (localStorage.getItem("location")) {
+    console.log("getLoc returned storage");
+    return JSON.parse(localStorage.getItem("location"));
+  } else {
+    console.log("getLoc requested update");
+    return updateLocation();
+  }
+}
 
 function getCurrentTime(time_ms = new Date()) {
   let time = new Date(time_ms);
-  time.setHours(12, 0);
+  // Если дата прилетела не в миллисекундах (если был передан аргумент),
+  // то выставляем время на полдень. В противном случае используем текущее время
+  if (arguments[0].toString().length != 13) {
+    time.setHours(12, 0);
+  }
+  let coords = getLocation();
   const hour = time.getHours();
   const min = time.getMinutes();
   const day = time.getDate();
   const month = time.getMonth() + 1; // Добавляем 1, т.к. getMonth() возвращает индекс месяца (0-11)
   const year = time.getFullYear();
-  const lat = "-8.65"; // Широта вашего местоположения
-  const lon = "115.22"; // Долгота вашего местоположения
+  const lat = coords.latitude; // Широта вашего местоположения
+  const lon = coords.longitude; // Долгота вашего местоположения
   const tzone = time.getTimezoneOffset() / -60; // Часовой пояс вашего местоположения
   const city = ""; // Город вашего местоположения
 
@@ -93,6 +131,8 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
   let texts;
 
   const dayTitles = getEventTitlesByDate(time_ms, events);
+  let storedNakshatra = localStorage.getItem("nakshatra");
+
   // console.log(dayTitles); // ["New Moon"]
 
   await fetch(
@@ -106,8 +146,12 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
       return response.json();
     })
     .then((data) => {
-      let taraBala = getTaraBala(data.data.nakshatra.details.nak_number, 21);
+      let taraBala = getTaraBala(
+        data.data.nakshatra.details.nak_number,
+        storedNakshatra
+      );
       let nakshatra = nakshatraByNum(data.data.nakshatra.details.nak_number);
+      let tithi = tithiByNum(data.data.tithi.details.tithi_number);
       texts = [
         {
           class: "module__wide today",
@@ -117,13 +161,11 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
         {
           class: "tithi",
           category: "Титхи",
-          categoryDescription: "Девушка, у вас такие шыкарные титхи…🤤",
-          title: data.data.tithi.details.special.split(" ")[0],
-          titleExtra:
-            data.data.tithi.details.tithi_number < 16
-              ? `${data.data.tithi.details.tithi_number}↑`
-              : `${data.data.tithi.details.tithi_number - 15}↓`,
-          description: data.data.tithi.details.summary,
+          categoryDescription:
+            "Титхи — это лунный день. В ведической астрологии титхи пронумерованы от 1 до 15 до полнолуния и от 1 до 15 после полнолуния. Например, 15 стрелочка вниз будет означать 30-й лунный день, а 15 стрелочка вверх — полнолуние.",
+          title: `${tithi.name} ${tithi.number}`,
+          titleExtra: tithi.type,
+          description: `${tithi.type_description} / ${tithi.curator}: ${tithi.curator_description} `,
           ends: msToDate(data.data.tithi.end_time_ms),
         },
         {
@@ -139,7 +181,7 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
           category: "Накшатра",
           categoryDescription: "Страп-он, фраппе, крапива, пряники…",
           title: nakshatra.name,
-          titleExtra: data.data.moon_sign,
+          titleExtra: nakshatra.ruler,
           description: data.data.nakshatra.details.summary,
           ends: msToDate(data.data.nakshatra.end_time_ms),
         },

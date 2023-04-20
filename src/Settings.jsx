@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { getLocation } from "./TaraUtils";
+import SelectNakshatra from "./SelectNakshatra";
 import { ReactComponent as LocationIcon } from "./icons/location.svg";
 import { ReactComponent as SettingsIcon } from "./icons/settings.svg";
 import { ReactComponent as Logo } from "./icons/tara_logo.svg";
@@ -12,36 +14,34 @@ import {
   ModalDialog,
   Stack,
   Switch,
+  Select,
   Typography,
 } from "@mui/joy";
 
 export default function SettingsPanel() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [location, setLocation] = useState(
-    JSON.parse(localStorage.getItem("location")) || {}
-  );
+  const [location, setLocation] = useState(() => getLocation());
 
-  console.log(getLocation);
-
-  const getLocation = () => {
+  function updateLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const { latitude, longitude } = position.coords;
-          setLocation({ latitude, longitude });
-          return { latitude, longitude };
-          localStorage.setItem(
-            "location",
-            JSON.stringify({ latitude, longitude })
-          );
+          let coords = {};
+          coords.latitude = position.coords.latitude.toFixed(2);
+          coords.longitude = position.coords.longitude.toFixed(2);
+          localStorage.setItem("location", JSON.stringify(coords));
+          setLocation(coords);
         },
-        (err) => console.warn(`ERROR(${err.code}): ${err.message}`)
+        (err) => console.warn(`ERROR(${err.code}): ${err.message}`),
+        {
+          enableHighAccuracy: false,
+        }
       );
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
-  };
+  }
 
   return (
     <>
@@ -70,11 +70,16 @@ export default function SettingsPanel() {
           invertedColors
           size="md"
           sx={(theme) => ({
+            py: 0,
             boxShadow: theme.shadow.xs,
             backgroundColor: "darkslategray",
           })}
         >
-          <ModalClose size="lg" sx={{ m: 0 }} color="transparent" />
+          <ModalClose
+            size="lg"
+            sx={{ m: 0, top: -8, color: "darkseagreen" }}
+            color="transparent"
+          />
           <Box display="flex" flexDirection="column" gap={2}>
             <Typography component="h3" textColor="darkseagreen">
               Настройки
@@ -90,6 +95,10 @@ export default function SettingsPanel() {
                 variant="soft"
               />
             </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography component="h6">Накшатра Луны</Typography>
+              <SelectNakshatra />
+            </Box>
             <Box display="flex" flexDirection="column" gap={1}>
               <Box
                 sx={{
@@ -99,7 +108,11 @@ export default function SettingsPanel() {
                 }}
               >
                 <Typography component="h6">Текущее местоположение</Typography>
-                <IconButton variant="plain" sx={{ m: 0 }} onClick={getLocation}>
+                <IconButton
+                  variant="plain"
+                  sx={{ m: 0 }}
+                  onClick={updateLocation}
+                >
                   <LocationIcon fill="darkseagreen" />
                 </IconButton>
               </Box>
