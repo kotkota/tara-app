@@ -19,11 +19,16 @@ export default function SelectBasic() {
       placeholder="Выбрать…"
       value={value}
       onChange={(e, newValue) => handleSelect(newValue)}
-      sx={{ minWidth: 160 }}
+      sx={{ minWidth: 150, backgroundColor: "white" }}
     >
       {nakshatras.map((item) => (
-        // <li key={item.id}>{item.name}</li>
-        <Option value={item.id}>{item.name}</Option>
+        <Option
+          color="neutral"
+          value={item.id}
+          sx={{ backgroundColor: "white" }}
+        >
+          {item.name}
+        </Option>
       ))}
     </Select>
   );

@@ -50,7 +50,7 @@ body {
   color: var(--accent-color);
 }
 .module_category,
-.module_time {
+.module_subtitle {
   font-family: var(--base-font);
   font-weight: 600;
   font-size: 50%;
@@ -63,9 +63,10 @@ body {
 .module_title span {
   font-weight: 300;
 }
-.module_time {
-  font-size: 50%;
+.module_subtitle {
+  /* white-space: pre-line; */
   letter-spacing: 0.1em;
+  font-size: 7px;
   opacity: 1;
 }
 .module_description {
@@ -205,6 +206,9 @@ h3,
 h4,
 h5 {
   --joy-fontFamily-body: var(--display-font);
+}
+[class*="JoyModalDialog"] {
+  --joy-palette-background-popup: #fff !important;
 }
 :root {
   --joy-fontFamily-body: var(--base-font);

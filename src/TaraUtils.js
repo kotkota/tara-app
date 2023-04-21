@@ -91,12 +91,15 @@ function getTaraBala(todayNakshatra, userNakshatra) {
 
 function msToDate(time) {
   let date = new Date(time);
-  return date.toLocaleString("en-gb", {
-    hour: "numeric",
-    minute: "numeric",
-    day: "numeric",
-    month: "numeric",
-  });
+  return (
+    "до " +
+    date.toLocaleString("en-gb", {
+      hour: "numeric",
+      minute: "numeric",
+      day: "numeric",
+      month: "numeric",
+    })
+  );
 }
 
 export function getEventTitlesByDate(date, events) {
@@ -163,10 +166,12 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
           category: "Титхи",
           categoryDescription:
             "Титхи — это лунный день. В ведической астрологии титхи пронумерованы от 1 до 15 до полнолуния и от 1 до 15 после полнолуния. Например, 15 стрелочка вниз будет означать 30-й лунный день, а 15 стрелочка вверх — полнолуние.",
-          title: `${tithi.name} ${tithi.number}`,
-          titleExtra: tithi.type,
-          description: `${tithi.type_description} / ${tithi.curator}: ${tithi.curator_description} `,
-          ends: msToDate(data.data.tithi.end_time_ms),
+          title: tithi.name,
+          titleExtra: tithi.number,
+          description: `${tithi.type_description}. ${tithi.curator_description} `,
+          subTitle: `${tithi.type} / ${tithi.curator}\n${msToDate(
+            data.data.tithi.end_time_ms
+          )}`,
         },
         {
           class: "tarabala",
@@ -183,7 +188,7 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
           title: nakshatra.name,
           titleExtra: nakshatra.ruler,
           description: data.data.nakshatra.details.summary,
-          ends: msToDate(data.data.nakshatra.end_time_ms),
+          subTitle: msToDate(data.data.nakshatra.end_time_ms),
         },
       ];
       callback(texts);

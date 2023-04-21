@@ -31,7 +31,7 @@ export default function InfoModule({ text }) {
       <h3 className="module_title">
         {text.title} {text.titleExtra && <span>{text.titleExtra}</span>}
       </h3>
-      {text.ends && <p className="module_time">до {text.ends}</p>}
+      {text.subTitle && <p className="module_subtitle">{text.subTitle}</p>}
       <p className="module_description">{text.description}</p>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <ModalDialog
