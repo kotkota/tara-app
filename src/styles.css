@@ -207,8 +207,8 @@ h4,
 h5 {
   --joy-fontFamily-body: var(--display-font);
 }
-[class*="JoyModalDialog"] {
-  --joy-palette-background-popup: #fff !important;
+[class*="JoySheet-root"] {
+  --joy-palette-background-popup: var(--joy-palette-neutral-softBg, var(--joy-palette-neutral-100, #EBEBEF)) !important;
 }
 :root {
   --joy-fontFamily-body: var(--base-font);

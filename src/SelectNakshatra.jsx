@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Select, Option } from "@mui/joy";
 import { nakshatras } from "./nakshatra";
 
-export default function SelectBasic() {
+export default function SelectNakshatra() {
   let storedNakshatra = localStorage.getItem("nakshatra");
   const [value, setValue] = useState(storedNakshatra || null);
 
   function handleSelect(newValue) {
-    localStorage.setItem("nakshatra", newValue);
-    console.log(localStorage.getItem("nakshatra"));
+    if (newValue) localStorage.setItem("nakshatra", newValue);
+    console.log("stored userNakshatra", localStorage.getItem("nakshatra"));
     setValue(newValue);
   }
 
@@ -19,13 +19,14 @@ export default function SelectBasic() {
       placeholder="Выбрать…"
       value={value}
       onChange={(e, newValue) => handleSelect(newValue)}
-      sx={{ minWidth: 150, backgroundColor: "white" }}
+      sx={{ minWidth: 150 }}
     >
       {nakshatras.map((item) => (
         <Option
+          key={item.id}
+          variant="soft"
           color="neutral"
           value={item.id}
-          sx={{ backgroundColor: "white" }}
         >
           {item.name}
         </Option>

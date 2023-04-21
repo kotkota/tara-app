@@ -5,21 +5,14 @@ import FullCalendar from "@fullcalendar/react";
 import Info from "./Info";
 import SettingsPanel from "./Settings";
 import * as t from "./TaraUtils";
-import {
-  Box,
-  Button,
-  Modal,
-  ModalClose,
-  ModalDialog,
-  Stack,
-  Typography,
-} from "@mui/joy";
+import { Button, Modal, ModalClose, ModalDialog, Typography } from "@mui/joy";
 
 function App() {
   const [texts, setTexts] = useState(() => t.initTexts());
   const [isOpen, setIsOpen] = useState(!localStorage.getItem("location"));
 
   useEffect(() => {
+    console.log('render')
     t.getDayInfo(new Date().getTime(), setTexts);
   }, []);
 
@@ -49,7 +42,7 @@ function App() {
         <>
           <Info texts={texts} />
 
-          <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+          <Modal open={isOpen} onClose={() => {}}>
             <ModalDialog
               variant="plain"
               size="md"
@@ -65,7 +58,6 @@ function App() {
               <Button
                 variant="soft"
                 onClick={() => {
-                  t.updateLocation();
                   t.getDayInfo(new Date().getTime(), setTexts);
                   setIsOpen(false);
                 }}
