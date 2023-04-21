@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { getLocation } from "./TaraUtils";
 import SelectNakshatra from "./SelectNakshatra";
 import { ReactComponent as LocationIcon } from "./icons/location.svg";
@@ -6,21 +6,18 @@ import { ReactComponent as SettingsIcon } from "./icons/settings.svg";
 import { ReactComponent as Logo } from "./icons/tara_logo.svg";
 import {
   Box,
-  Button,
   Divider,
   IconButton,
   Modal,
   ModalClose,
   ModalDialog,
-  Stack,
+  Sheet,
   Switch,
-  Select,
   Typography,
 } from "@mui/joy";
 
 export default function SettingsPanel() {
   const [isOpen, setIsOpen] = useState(false);
-
   const [location, setLocation] = useState(() => getLocation());
 
   function updateLocation() {
@@ -53,7 +50,7 @@ export default function SettingsPanel() {
           px: 1,
         }}
       >
-        <Logo fill="darkseagreen" width="120" style={{ marginLeft: 1 }} />
+        <Logo fill="darkseagreen" width="120" />
         <IconButton
           variant="plain"
           sx={{ m: 0 }}
@@ -67,20 +64,19 @@ export default function SettingsPanel() {
         <ModalDialog
           layout="fullscreen"
           variant="solid"
-          invertedColors
           size="md"
           sx={(theme) => ({
             py: 0,
-            boxShadow: theme.shadow.xs,
+            // boxShadow: theme.shadow.xs,
             backgroundColor: "darkslategray",
           })}
         >
           <ModalClose
             size="lg"
-            sx={{ m: 0, top: -8, color: "darkseagreen" }}
+            sx={{ m: 0, top: -8, color: "darkseagreen", zIndex: 1 }}
             color="transparent"
           />
-          <Box display="flex" flexDirection="column" gap={2}>
+          <Sheet variant="solid" invertedColors sx={{display: "flex", flexDirection: "column", gap: 2, backgroundColor: "transparent"}}>
             <Typography component="h3" textColor="darkseagreen">
               Настройки
             </Typography>
@@ -111,7 +107,7 @@ export default function SettingsPanel() {
                 <IconButton
                   variant="plain"
                   sx={{ m: 0 }}
-                  onClick={updateLocation}
+                  onClick={() => updateLocation()}
                 >
                   <LocationIcon fill="darkseagreen" />
                 </IconButton>
@@ -125,7 +121,7 @@ export default function SettingsPanel() {
                 </Typography>
               </Box>
             </Box>
-          </Box>
+          </Sheet>
         </ModalDialog>
       </Modal>
     </>
