@@ -8,29 +8,18 @@ import * as t from "./TaraUtils";
 import { Button, Modal, ModalClose, ModalDialog, Typography } from "@mui/joy";
 
 function App() {
-  const [texts, setTexts] = useState(() => t.initTexts());
+  const [date, setDate] = useState(() => Date.now());
   const [isOpen, setIsOpen] = useState(!localStorage.getItem("location"));
-
-  useEffect(() => {
-    console.log('render')
-    t.getDayInfo(new Date().getTime(), setTexts);
-  }, []);
 
   let options = {
     ...t.calendarOptions,
     eventClick: (eventInfo) => {
-      // console.log(eventInfo)
-      // console.log(eventInfo.event)
-      t.getDayInfo(eventInfo.event.startStr, setTexts);
+      setDate(eventInfo.event.startStr);
     },
-    viewDidMount: (view) => {
-      // console.log(view)
-      // t.getDayInfo(new Date().getTime(), setTexts)
-    },
+    viewDidMount: (view) => {},
     dateClick: (info) => {
       console.log(info.dateStr);
-      t.getDayInfo(info.dateStr, setTexts);
-      // info.dayEl.style.backgroundColor = 'ghostwhite'
+      setDate(info.dateStr);
     },
   };
 
@@ -40,7 +29,7 @@ function App() {
       <FullCalendar {...options} />
       {isOpen ? (
         <>
-          <Info texts={texts} />
+          <Info date={date} />
 
           <Modal open={isOpen} onClose={() => {}}>
             <ModalDialog
@@ -50,7 +39,6 @@ function App() {
                 boxShadow: theme.shadow.xs,
               })}
             >
-              {/* <ModalClose size="md" sx={{ color: "darkseagreen" }} /> */}
               <Typography level="body1">
                 Для расчета времени событий в календаре необходим доступ к
                 текущей геолокации.
@@ -58,7 +46,7 @@ function App() {
               <Button
                 variant="soft"
                 onClick={() => {
-                  t.getDayInfo(new Date().getTime(), setTexts);
+                  setDate(Date.now());
                   setIsOpen(false);
                 }}
                 sx={{ mt: 2 }}
@@ -69,7 +57,7 @@ function App() {
           </Modal>
         </>
       ) : (
-        <Info texts={texts} />
+        <Info date={date} />
       )}
     </>
   );
