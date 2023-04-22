@@ -72,7 +72,7 @@ function getCurrentTime(time_ms = new Date()) {
 }
 
 function getTaraBala(todayNakshatra, userNakshatra) {
-  let result
+  let result;
   const tb = [
     { name: "Джанма", description: "Опасность для тела. Негативно" },
     { name: "Сампат", description: "Богатство и процветание. Благоприятно" },
@@ -87,12 +87,16 @@ function getTaraBala(todayNakshatra, userNakshatra) {
     { name: "Митра", description: "Указывает хорошее. Благоприятно" },
     { name: "Парама митра", description: "Лучший друг. Очень благоприятно" },
   ];
-  if (userNakshatra == undefined) { 
-    result = { name: "…", description: "Укажите свою накшатру Луны в настройках" }
+  console.log("userNakshatra", userNakshatra);
+  if (isNaN(userNakshatra) || userNakshatra == null) {
+    result = {
+      name: "…",
+      description: "Укажите свою накшатру Луны в настройках",
+    };
   } else {
-    result = tb[(27 - userNakshatra + todayNakshatra) % 9]
+    result = tb[(27 - userNakshatra + todayNakshatra) % 9];
   }
-  return result
+  return result;
 }
 
 function msToDate(time) {
