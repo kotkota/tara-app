@@ -179,9 +179,7 @@ export async function getDayInfo(time_ms = new Date().getTime(), callback) {
           title: tithi.name,
           titleExtra: tithi.number,
           description: `${tithi.type_description}. ${tithi.curator_description} `,
-          subTitle: `${tithi.type} / ${tithi.curator}\n${msToDate(
-            data.data.tithi.end_time_ms
-          )}`,
+          subTitle: `${tithi.type} / ${msToDate(data.data.tithi.end_time_ms)}`,
         },
         {
           class: "tarabala",

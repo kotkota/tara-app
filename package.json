@@ -1,4 +1,4 @@
-  {
+{
   "name": "tara",
   "version": "0.1.0",
   "description": "Cycles and periods",
@@ -12,9 +12,9 @@
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.5",
     "@testing-library/user-event": "13.2.0",
-    "@emotion/react": "*",
-    "@emotion/styled": "*",
-    "@mui/joy": "*",
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/joy": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.0"
