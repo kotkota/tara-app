@@ -6529,6 +6529,11 @@ methods@~1.1.2:
   resolved "https://registry.npmjs.org/methods/-/methods-1.1.2.tgz"
   integrity sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==
 
+mhah-panchang@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/mhah-panchang/-/mhah-panchang-1.1.1.tgz#450e7363312ad81f9486e70d0f91431dac385eb7"
+  integrity sha512-sEIagdhonpD9IGSRTZifaEx+R3QYB5lj2XgCsUPuHuv4hAQ0cFyt/a0KsPdUCDv+CVbI0vbgMwHngCeMXKL+8w==
+
 micromatch@^4.0.2, micromatch@^4.0.4, micromatch@^4.0.5:
   version "4.0.5"
   resolved "https://registry.npmjs.org/micromatch/-/micromatch-4.0.5.tgz"
