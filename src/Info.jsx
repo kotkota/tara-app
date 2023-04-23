@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MhahPanchang } from "mhah-panchang";
 import InfoModule from "./InfoModule";
 import { events } from "./events";
-import { getLocation } from "./TaraUtils";
+// import { getLocation } from "./TaraUtils";
 import { nakshatras } from "./nakshatra";
 import { tithis } from "./tithi";
 
@@ -46,7 +46,7 @@ export default function Info({ date }) {
         title: tithi.name,
         titleExtra: tithi.number,
         description: `${tithi.type_description}. ${tithi.curator_description} `,
-        subTitle: `${tithi.type} / ${msToDate(Tithi.end)}`,
+        subTitle: `${tithi.type} / ${formatDate(Tithi.end)}`,
       },
       {
         class: "tarabala",
@@ -63,7 +63,7 @@ export default function Info({ date }) {
         title: nakshatra.name,
         titleExtra: nakshatra.ruler,
         description: nakshatra.description,
-        subTitle: msToDate(Nakshatra.end),
+        subTitle: formatDate(Nakshatra.end),
       },
     ];
   }
@@ -84,7 +84,7 @@ export default function Info({ date }) {
     if (time_ms.toString().length !== 13) {
       time.setHours(12, 0);
     }
-    const coords = getLocation();
+    // const coords = getLocation();
     const hour = time.getHours();
     const min = time.getMinutes();
     const day = time.getDate();
@@ -150,7 +150,7 @@ export default function Info({ date }) {
     return result;
   }
 
-  function msToDate(time) {
+  function formatDate(time) {
     let date = new Date(time);
     return (
       "до " +

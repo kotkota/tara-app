@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { getLocation } from "./TaraUtils";
 import SelectNakshatra from "./SelectNakshatra";
 import { ReactComponent as LocationIcon } from "./icons/location.svg";
 import { ReactComponent as SettingsIcon } from "./icons/settings.svg";
@@ -18,7 +17,16 @@ import {
 
 export default function SettingsPanel() {
   const [isOpen, setIsOpen] = useState(false);
-  const [location, setLocation] = useState(() => getLocation());
+  const [location, setLocation] = useState(() => getStoredLocation());
+
+  function getStoredLocation() {
+    if (localStorage.getItem("location")) {
+      console.log("getLoc returned storage");
+      return JSON.parse(localStorage.getItem("location"));
+    } else {
+      console.log("getLoc failed");
+    }
+  }
 
   function updateLocation() {
     if (navigator.geolocation) {
@@ -76,7 +84,16 @@ export default function SettingsPanel() {
             sx={{ m: 0, top: -8, color: "darkseagreen", zIndex: 1 }}
             color="transparent"
           />
-          <Sheet variant="solid" invertedColors sx={{display: "flex", flexDirection: "column", gap: 2, backgroundColor: "transparent"}}>
+          <Sheet
+            variant="solid"
+            invertedColors
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              backgroundColor: "transparent",
+            }}
+          >
             <Typography component="h3" textColor="darkseagreen">
               Настройки
             </Typography>
@@ -114,10 +131,10 @@ export default function SettingsPanel() {
               </Box>
               <Box display="flex" gap={2}>
                 <Typography level="body3" flexGrow={1}>
-                  Широта: {location.latitude}
+                  Широта: {location?.latitude}
                 </Typography>
                 <Typography level="body3" flexGrow={1}>
-                  Долгота: {location.longitude}
+                  Долгота: {location?.longitude}
                 </Typography>
               </Box>
             </Box>
