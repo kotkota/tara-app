@@ -1,4 +1,4 @@
-export const tithi = [
+export const tithis = [
   {
     number: "1↑",
     name: "Пратипад",

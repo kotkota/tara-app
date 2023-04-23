@@ -1,86 +1,71 @@
 import React, { useState, useEffect } from "react";
+import { MhahPanchang } from "mhah-panchang";
 import InfoModule from "./InfoModule";
 import { events } from "./events";
 import { getLocation } from "./TaraUtils";
-import { nakshatraByNum } from "./nakshatra";
-import { tithiByNum } from "./tithi";
+import { nakshatras } from "./nakshatra";
+import { tithis } from "./tithi";
+
+let mhah = new MhahPanchang();
 
 export default function Info({ date }) {
-  const [texts, setTexts] = useState([
-    {
-      class: "module__wide today",
-      title: new Date().toLocaleString("ru", { dateStyle: "long" }),
-      description: getStoredEventsByDate(Date.now(), events),
-    },
-  ]);
+  const [texts, setTexts] = useState(getDayInfo());
 
   useEffect(() => {
-    getDayInfo(date);
-    console.log("texts: ", texts);
+    setTexts(getDayInfo(date));
+    // console.log("texts: ", texts);
   }, [date]);
 
-  async function getDayInfo(time_ms = Date.now()) {
-    const time = getCurrentTime(time_ms);
+  function getDayInfo(time_ms = Date.now()) {
+    let panchang = mhah.calculate(new Date(time_ms));
+    let Tithi = panchang.Tithi;
+    let Nakshatra = panchang.Nakshatra;
+    // console.log("panchang: ", panchang);
+
     const dayTitles = getStoredEventsByDate(time_ms, events);
     const storedNakshatra = localStorage.getItem("nakshatra");
 
-    try {
-      const response = await fetch(
-        "https://www.astroyogi.com/contentsyn/kundli/gettithidetails?objStr=" +
-          encodeURIComponent(time)
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
+    const taraBala = getTaraBala(Nakshatra.ino + 1, storedNakshatra);
+    const nakshatra = nakshatras[Nakshatra.ino];
+    const tithi = tithis[Tithi.ino];
+    // console.log("nakshatra ends: ", Nakshatra.end);
 
-      const taraBala = getTaraBala(
-        data.data.nakshatra.details.nak_number,
-        storedNakshatra
-      );
-      const nakshatra = nakshatraByNum(data.data.nakshatra.details.nak_number);
-      const tithi = tithiByNum(data.data.tithi.details.tithi_number);
-
-      const newTexts = [
-        {
-          class: "module__wide today",
-          title: new Date(time_ms).toLocaleString("ru", {
-            dateStyle: "long",
-          }),
-          description: dayTitles,
-        },
-        {
-          class: "tithi",
-          category: "Титхи",
-          categoryDescription:
-            "Титхи — это лунный день. В ведической астрологии титхи пронумерованы от 1 до 15 до полнолуния и от 1 до 15 после полнолуния. Например, 15 стрелочка вниз будет означать 30-й лунный день, а 15 стрелочка вверх — полнолуние.",
-          title: tithi.name,
-          titleExtra: tithi.number,
-          description: `${tithi.type_description}. ${tithi.curator_description} `,
-          subTitle: `${tithi.type} / ${msToDate(data.data.tithi.end_time_ms)}`,
-        },
-        {
-          class: "tarabala",
-          category: "Тара Бала",
-          categoryDescription: "Кого-кого ты там тарабала!?",
-          title: taraBala.name,
-          titleExtra: "",
-          description: taraBala.description,
-        },
-        {
-          class: "module__wide nakshatra",
-          category: "Накшатра",
-          categoryDescription: "Страп-он, фраппе, крапива, пряники…",
-          title: nakshatra.name,
-          titleExtra: nakshatra.ruler,
-          description: data.data.nakshatra.details.summary,
-          subTitle: msToDate(data.data.nakshatra.end_time_ms),
-        },
-      ];
-      setTexts(newTexts);
-    } catch (error) {
-      console.error(error);
-    }
+    return [
+      {
+        class: "module__wide today",
+        title: new Date(time_ms).toLocaleString("ru", {
+          dateStyle: "long",
+        }),
+        description: dayTitles,
+      },
+      {
+        class: "tithi",
+        category: "Титхи",
+        categoryDescription:
+          "Титхи — это лунный день. В ведической астрологии титхи пронумерованы от 1 до 15 до полнолуния и от 1 до 15 после полнолуния. Например, 15 стрелочка вниз будет означать 30-й лунный день, а 15 стрелочка вверх — полнолуние.",
+        title: tithi.name,
+        titleExtra: tithi.number,
+        description: `${tithi.type_description}. ${tithi.curator_description} `,
+        subTitle: `${tithi.type} / ${msToDate(Tithi.end)}`,
+      },
+      {
+        class: "tarabala",
+        category: "Тара Бала",
+        categoryDescription: "Кого-кого ты там тарабала!?",
+        title: taraBala.name,
+        titleExtra: "",
+        description: taraBala.description,
+      },
+      {
+        class: "module__wide nakshatra",
+        category: "Накшатра",
+        categoryDescription: "Страп-он, фраппе, крапива, пряники…",
+        title: nakshatra.name,
+        titleExtra: nakshatra.ruler,
+        description: nakshatra.description,
+        subTitle: msToDate(Nakshatra.end),
+      },
+    ];
   }
 
   function getStoredEventsByDate(date, events) {
@@ -153,7 +138,7 @@ export default function Info({ date }) {
       { name: "Митра", description: "Указывает хорошее. Благоприятно" },
       { name: "Парама митра", description: "Лучший друг. Очень благоприятно" },
     ];
-    console.log("userNakshatra", userNakshatra);
+    // console.log("userNakshatra", userNakshatra);
     if (isNaN(userNakshatra) || userNakshatra == null) {
       result = {
         name: "…",
