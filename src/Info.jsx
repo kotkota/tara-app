@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { MhahPanchang } from "mhah-panchang";
 import InfoModule from "./InfoModule";
 import { events } from "./events";
-import { getLocation } from "./TaraUtils";
 import { nakshatras } from "./nakshatra";
 import { tithis } from "./tithi";
 
@@ -46,7 +45,7 @@ export default function Info({ date }) {
         title: tithi.name,
         titleExtra: tithi.number,
         description: `${tithi.type_description}. ${tithi.curator_description} `,
-        subTitle: `${tithi.type} / ${msToDate(Tithi.end)}`,
+        subTitle: `${tithi.type} / ${formatDate(Tithi.end)}`,
       },
       {
         class: "tarabala",
@@ -63,7 +62,7 @@ export default function Info({ date }) {
         title: nakshatra.name,
         titleExtra: nakshatra.ruler,
         description: nakshatra.description,
-        subTitle: msToDate(Nakshatra.end),
+        subTitle: formatDate(Nakshatra.end),
       },
     ];
   }
@@ -84,32 +83,10 @@ export default function Info({ date }) {
     if (time_ms.toString().length !== 13) {
       time.setHours(12, 0);
     }
-    const coords = getLocation();
-    const hour = time.getHours();
-    const min = time.getMinutes();
-    const day = time.getDate();
-    const month = time.getMonth() + 1;
-    const year = time.getFullYear();
-    const lat = coords.latitude;
-    const lon = coords.longitude;
-    const tzone = time.getTimezoneOffset() / -60;
-    const city = "";
 
-    console.log(
-      `Hour: ${hour}, Min: ${min}, Day: ${day}, Month: ${month}, Year: ${year}, Lat: ${lat}, Lon: ${lon}, Tzone: ${tzone}, city: ${city}`
-    );
+    console.log(`time: ${time.toLocaleString()}`);
 
-    return JSON.stringify({
-      Hour: hour,
-      Min: min,
-      Day: day,
-      Month: month,
-      Year: year,
-      Lat: lat,
-      Lon: lon,
-      Tzone: tzone,
-      city: city,
-    });
+    return time;
   }
 
   function initTexts() {
@@ -150,7 +127,7 @@ export default function Info({ date }) {
     return result;
   }
 
-  function msToDate(time) {
+  function formatDate(time) {
     let date = new Date(time);
     return (
       "до " +
