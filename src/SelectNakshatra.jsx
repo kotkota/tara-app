@@ -10,6 +10,7 @@ export default function SelectNakshatra() {
     if (newValue) localStorage.setItem("nakshatra", newValue);
     console.log("stored userNakshatra", localStorage.getItem("nakshatra"));
     setValue(newValue);
+    window.location.reload();
   }
 
   return (
@@ -22,12 +23,7 @@ export default function SelectNakshatra() {
       sx={{ minWidth: 150 }}
     >
       {nakshatras.map((item) => (
-        <Option
-          key={item.id}
-          variant="soft"
-          color="neutral"
-          value={item.id}
-        >
+        <Option key={item.id} variant="soft" color="neutral" value={item.id}>
           {item.name}
         </Option>
       ))}
