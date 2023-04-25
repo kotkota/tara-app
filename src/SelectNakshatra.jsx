@@ -7,10 +7,12 @@ export default function SelectNakshatra() {
   const [value, setValue] = useState(storedNakshatra || null);
 
   function handleSelect(newValue) {
-    if (newValue) localStorage.setItem("nakshatra", newValue);
+    if (newValue) {
+      localStorage.setItem("nakshatra", newValue);
+      window.location.reload();
+    }
     console.log("stored userNakshatra", localStorage.getItem("nakshatra"));
     setValue(newValue);
-    window.location.reload();
   }
 
   return (
