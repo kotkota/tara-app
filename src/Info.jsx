@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { MhahPanchang } from "mhah-panchang";
 import InfoModule from "./InfoModule";
 import { events } from "./events";
 import { nakshatras } from "./nakshatra";
 import { tithis } from "./tithi";
+import { AppContext } from "./App";
 
 let mhah = new MhahPanchang();
 
 export default function Info({ date }) {
   const [texts, setTexts] = useState(getDayInfo());
+  const { nakshatra, setNakshatra } = useContext(AppContext);
 
   useEffect(() => {
     setTexts(getDayInfo(date));
-    // console.log("texts: ", texts);
-  }, [date]);
+  }, [date, nakshatra]);
 
   function getDayInfo(time_ms = Date.now()) {
     let panchang = mhah.calculate(new Date(time_ms));
@@ -23,6 +24,7 @@ export default function Info({ date }) {
 
     const dayTitles = getStoredEventsByDate(time_ms, events);
     const storedNakshatra = localStorage.getItem("nakshatra");
+    // const storedNakshatra = nakshatra;
 
     const taraBala = getTaraBala(Nakshatra.ino + 1, storedNakshatra);
     const nakshatra = nakshatras[Nakshatra.ino];
@@ -87,16 +89,6 @@ export default function Info({ date }) {
     console.log(`time: ${time.toLocaleString()}`);
 
     return time;
-  }
-
-  function initTexts() {
-    return [
-      {
-        class: "module__wide today",
-        title: new Date().toLocaleString("ru", { dateStyle: "long" }),
-        description: getStoredEventsByDate(Date.now(), events),
-      },
-    ];
   }
 
   function getTaraBala(todayNakshatra, userNakshatra) {

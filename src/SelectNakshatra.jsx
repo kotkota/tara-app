@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Select, Option } from "@mui/joy";
 import { nakshatras } from "./nakshatra";
+import { AppContext } from "./App";
 
 export default function SelectNakshatra() {
-  let storedNakshatra = localStorage.getItem("nakshatra");
-  const [value, setValue] = useState(storedNakshatra || null);
+  const { nakshatra, setNakshatra } = useContext(AppContext);
 
   function handleSelect(newValue) {
-    if (newValue) {
-      localStorage.setItem("nakshatra", newValue);
-      window.location.reload();
-    }
-    console.log("stored userNakshatra", localStorage.getItem("nakshatra"));
-    setValue(newValue);
+    localStorage.setItem("nakshatra", newValue);
+    setNakshatra(newValue);
+    console.log("new userNakshatra", localStorage.getItem("nakshatra"));
   }
 
   return (
@@ -20,7 +17,7 @@ export default function SelectNakshatra() {
       size="sm"
       variant="soft"
       placeholder="Выбрать…"
-      value={value}
+      value={nakshatra}
       onChange={(e, newValue) => handleSelect(newValue)}
       sx={{ minWidth: 150 }}
     >

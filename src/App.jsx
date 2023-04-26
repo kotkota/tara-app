@@ -6,8 +6,13 @@ import Info from "./Info";
 import SettingsPanel from "./Settings";
 import * as t from "./TaraUtils";
 
+export const AppContext = React.createContext();
+
 function App() {
   const [date, setDate] = useState(() => Date.now());
+  const [nakshatra, setNakshatra] = useState(
+    localStorage.getItem("nakshatra") || null
+  );
 
   let options = {
     ...t.calendarOptions,
@@ -22,11 +27,11 @@ function App() {
   };
 
   return (
-    <>
+    <AppContext.Provider value={{ nakshatra, setNakshatra }}>
       <SettingsPanel />
       <FullCalendar {...options} />
       <Info date={date} />
-    </>
+    </AppContext.Provider>
   );
 }
 
