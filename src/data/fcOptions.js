@@ -5,9 +5,9 @@ import { events } from "./events";
 export const calendarOptions = {
   plugins: [multiMonthPlugin, interactionPlugin],
   initialView: "multiMonthYear",
-  selectable: true,
-  initialEvents: { events },
   multiMonthMaxColumns: 1,
+  initialEvents: { events },
+  selectable: true,
   locale: "ru",
   firstDay: 1,
   nextDayThreshold: "09:00:00",
