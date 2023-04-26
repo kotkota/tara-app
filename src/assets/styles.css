@@ -98,7 +98,7 @@ body {
   opacity: 0.25;
 }
 .fc .fc-highlight {
-  background: none;
+  background: gainsboro;
   inset: 0 5px 5px;
 }
 .fc-event-selected:after,
