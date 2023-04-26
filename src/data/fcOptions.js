@@ -3,9 +3,10 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { events } from "./events";
 
 export const calendarOptions = {
-  initialView: "multiMonthYear",
   plugins: [multiMonthPlugin, interactionPlugin],
-  events: { events },
+  initialView: "multiMonthYear",
+  selectable: true,
+  initialEvents: { events },
   multiMonthMaxColumns: 1,
   locale: "ru",
   firstDay: 1,
