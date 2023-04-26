@@ -96,9 +96,9 @@ body {
   border: solid 1px var(--bg-color);
   border-radius: 5px;
   opacity: 0.25;
+  background: gainsboro;
 }
 .fc .fc-highlight {
-  background: gainsboro;
   inset: 0 5px 5px;
 }
 .fc-event-selected:after,
