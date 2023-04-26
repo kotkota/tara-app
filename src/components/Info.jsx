@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { MhahPanchang } from "mhah-panchang";
 import InfoModule from "./InfoModule";
-import { events } from "./events";
-import { nakshatras } from "./nakshatra";
-import { tithis } from "./tithi";
-import { AppContext } from "./App";
+import { events } from "../data/events";
+import { nakshatras } from "../data/nakshatra";
+import { tithis } from "../data/tithi";
+import { AppContext } from "../App";
 
 let mhah = new MhahPanchang();
 

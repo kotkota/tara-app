@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import SelectNakshatra from "./SelectNakshatra";
-import { ReactComponent as LocationIcon } from "./icons/location.svg";
-import { ReactComponent as SettingsIcon } from "./icons/settings.svg";
-import { ReactComponent as Logo } from "./icons/tara_logo.svg";
+import { ReactComponent as LocationIcon } from "../assets/icons/location.svg";
+import { ReactComponent as SettingsIcon } from "../assets/icons/settings.svg";
+import { ReactComponent as Logo } from "../assets/icons/tara_logo.svg";
 import {
   Box,
   Divider,

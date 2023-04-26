@@ -1,10 +1,10 @@
-import "./styles.css";
+import "./assets/styles.css";
 
 import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
-import Info from "./Info";
-import SettingsPanel from "./Settings";
-import * as t from "./TaraUtils";
+import Info from "./components/Info";
+import SettingsPanel from "./components/Settings";
+import { calendarOptions } from "./data/fcOptions";
 
 export const AppContext = React.createContext();
 
@@ -15,7 +15,7 @@ function App() {
   );
 
   let options = {
-    ...t.calendarOptions,
+    ...calendarOptions,
     eventClick: (eventInfo) => {
       setDate(eventInfo.event.startStr);
     },

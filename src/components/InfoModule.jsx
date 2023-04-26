@@ -1,5 +1,4 @@
-import "./styles.css";
-import { ReactComponent as InfoOutlined } from "./icons/info.svg";
+import { ReactComponent as InfoOutlined } from "../assets/icons/info.svg";
 import React, { useState } from "react";
 import {
   Box,
