@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Select, Option } from "@mui/joy";
-import { nakshatras } from "./nakshatra";
-import { AppContext } from "./App";
+import { nakshatras } from "../data/nakshatra";
+import { AppContext } from "../App";
 
 export default function SelectNakshatra() {
   const { nakshatra, setNakshatra } = useContext(AppContext);
