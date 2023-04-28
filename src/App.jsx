@@ -19,12 +19,13 @@ function formatDate(time) {
 
 function App() {
   const calendarRef = useRef();
-  const [date, setDate] = useState(() => Date.now());
-  const [periodStartDate, setPeriodStartDate] = useState(
-    localStorage.getItem("periodStartDate") || "2023-04-20"
-  );
   const [nakshatra, setNakshatra] = useState(
     localStorage.getItem("nakshatra") || null
+  );
+  const [date, setDate] = useState(() => Date.now());
+  const periodDuration = localStorage.getItem("periodDuration") || 29;
+  const [periodStartDate, setPeriodStartDate] = useState(
+    localStorage.getItem("periodStartDate") || "2023-04-20"
   );
 
   let options = {
@@ -47,7 +48,7 @@ function App() {
           dtstart: formatDate(periodStartDate),
           until: "2024-01-01",
           freq: "daily",
-          interval: 28,
+          interval: periodDuration,
         },
         duration: "120:00:00",
         display: "background",
