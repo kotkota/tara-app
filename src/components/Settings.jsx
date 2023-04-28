@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SelectNakshatra from "./SelectNakshatra";
 import { ReactComponent as LocationIcon } from "../assets/icons/location.svg";
 import { ReactComponent as SettingsIcon } from "../assets/icons/settings.svg";
-import { ReactComponent as Logo } from "../assets/icons/tara_logo.svg";
+import { ReactComponent as Logo } from "../assets/tara_logo.svg";
 import {
   Box,
   Divider,
@@ -58,7 +58,7 @@ export default function SettingsPanel() {
           px: 1,
         }}
       >
-        <Logo fill="darkseagreen" width="120" />
+        <Logo fill="darkseagreen" width="120" style={{ marginLeft: "-8px" }} />
         <IconButton
           variant="plain"
           sx={{ m: 0 }}
