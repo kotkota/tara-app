@@ -11,6 +11,7 @@
     "@fullcalendar/interaction": "6.1.5",
     "@fullcalendar/multimonth": "6.1.0",
     "@fullcalendar/react": "6.1.5",
+    "@fullcalendar/rrule": "6.1.5",
     "@mui/joy": "latest",
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.5",
@@ -18,7 +19,8 @@
     "mhah-panchang": "^1.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-scripts": "5.0.0"
+    "react-scripts": "5.0.0",
+    "rrule": "^2.7.2"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",

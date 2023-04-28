@@ -1,12 +1,14 @@
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
+import rrulePlugin from "@fullcalendar/rrule";
+
 import { events } from "./events";
 
 export const calendarOptions = {
-  plugins: [multiMonthPlugin, interactionPlugin],
+  plugins: [multiMonthPlugin, rrulePlugin, interactionPlugin],
   initialView: "multiMonthYear",
   multiMonthMaxColumns: 1,
-  initialEvents: { events },
+  // initialEvents: { events },
   selectable: true,
   locale: "ru",
   firstDay: 1,

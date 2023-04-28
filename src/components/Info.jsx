@@ -10,7 +10,7 @@ let mhah = new MhahPanchang();
 
 export default function Info({ date }) {
   const [texts, setTexts] = useState(getDayInfo());
-  const { nakshatra, setNakshatra } = useContext(AppContext);
+  const { nakshatra } = useContext(AppContext);
 
   useEffect(() => {
     setTexts(getDayInfo(date));
