@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SelectNakshatra from "./SelectNakshatra";
-import { ReactComponent as LocationIcon } from "../assets/icons/location.svg";
+import SetLocation from "./SetLocation";
 import { ReactComponent as SettingsIcon } from "../assets/icons/settings.svg";
 import { ReactComponent as Logo } from "../assets/tara_logo.svg";
 import {
@@ -17,36 +17,6 @@ import {
 
 export default function SettingsPanel() {
   const [isOpen, setIsOpen] = useState(false);
-  const [location, setLocation] = useState(() => getStoredLocation());
-
-  function getStoredLocation() {
-    if (localStorage.getItem("location")) {
-      console.log("getLoc returned storage");
-      return JSON.parse(localStorage.getItem("location"));
-    } else {
-      console.log("getLoc failed");
-    }
-  }
-
-  function updateLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          let coords = {};
-          coords.latitude = position.coords.latitude.toFixed(2);
-          coords.longitude = position.coords.longitude.toFixed(2);
-          localStorage.setItem("location", JSON.stringify(coords));
-          setLocation(coords);
-        },
-        (err) => console.warn(`ERROR(${err.code}): ${err.message}`),
-        {
-          enableHighAccuracy: false,
-        }
-      );
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
-  }
 
   return (
     <>
@@ -75,8 +45,11 @@ export default function SettingsPanel() {
           size="md"
           sx={(theme) => ({
             py: 0,
+            mx: "auto",
             // boxShadow: theme.shadow.xs,
+            boxShadow: "none",
             backgroundColor: "darkslategray",
+            maxWidth: 500,
           })}
         >
           <ModalClose
@@ -111,32 +84,6 @@ export default function SettingsPanel() {
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography component="h6">Накшатра Луны</Typography>
               <SelectNakshatra />
-            </Box>
-            <Box display="flex" flexDirection="column" gap={1}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-end",
-                }}
-              >
-                <Typography component="h6">Текущее местоположение</Typography>
-                <IconButton
-                  variant="plain"
-                  sx={{ m: 0 }}
-                  onClick={() => updateLocation()}
-                >
-                  <LocationIcon fill="darkseagreen" />
-                </IconButton>
-              </Box>
-              <Box display="flex" gap={2}>
-                <Typography level="body3" flexGrow={1}>
-                  Широта: {location?.latitude}
-                </Typography>
-                <Typography level="body3" flexGrow={1}>
-                  Долгота: {location?.longitude}
-                </Typography>
-              </Box>
             </Box>
           </Sheet>
         </ModalDialog>
