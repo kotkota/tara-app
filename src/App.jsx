@@ -4,10 +4,11 @@ import React, { useState, useEffect, useRef } from "react";
 import FullCalendar from "@fullcalendar/react";
 import Info from "./components/Info";
 import SettingsPanel from "./components/Settings";
+import { AppContext } from "./components/AppContext";
 import { calendarOptions } from "./data/fcOptions";
 import { events } from "./data/events";
 
-export const AppContext = React.createContext();
+// export const AppContext = React.createContext();
 
 function formatDate(time) {
   const date = new Date(time);

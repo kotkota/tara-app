@@ -4,7 +4,7 @@ import InfoModule from "./InfoModule";
 import { events } from "../data/events";
 import { nakshatras } from "../data/nakshatra";
 import { tithis } from "../data/tithi";
-import { AppContext } from "../App";
+import { AppContext } from "./AppContext";
 
 let mhah = new MhahPanchang();
 
