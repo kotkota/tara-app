@@ -8,9 +8,9 @@ import { AppContext } from "./AppContext";
 
 let mhah = new MhahPanchang();
 
-export default function Info({ date }) {
+export default function Info() {
   const [texts, setTexts] = useState(getDayInfo());
-  const { nakshatra } = useContext(AppContext);
+  const { date, nakshatra } = useContext(AppContext);
 
   useEffect(() => {
     setTexts(getDayInfo(date));
