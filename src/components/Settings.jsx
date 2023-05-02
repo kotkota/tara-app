@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import SelectNakshatra from "./SelectNakshatra";
-import SetLocation from "./SetLocation";
+import SelectPeriod from "./SelectPeriod";
+import { AppContext } from "./AppContext";
+
 import { ReactComponent as SettingsIcon } from "../assets/icons/settings.svg";
 import { ReactComponent as Logo } from "../assets/tara_logo.svg";
 import {
@@ -77,13 +79,29 @@ export default function SettingsPanel() {
                 checked={true}
                 color="neutral"
                 disabled={true}
-                size="md"
+                size="sm"
                 variant="soft"
               />
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
               <Typography component="h6">Накшатра Луны</Typography>
               <SelectNakshatra />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Typography component="h6">Продолжительность цикла</Typography>
+              <SelectPeriod />
             </Box>
           </Sheet>
         </ModalDialog>

@@ -9,20 +9,20 @@ export default function SelectNakshatra() {
   function handleSelect(newValue) {
     localStorage.setItem("nakshatra", newValue);
     setNakshatra(newValue);
-    console.log("new userNakshatra", localStorage.getItem("nakshatra"));
+    console.log("new userNakshatra:", localStorage.getItem("nakshatra"));
   }
 
   return (
     <Select
-      size="sm"
+      size="xs"
       variant="soft"
       placeholder="Выбрать…"
       value={nakshatra}
       onChange={(e, newValue) => handleSelect(newValue)}
-      sx={{ minWidth: 150 }}
+      sx={{ minWidth: 150, pl: 1, py: 0.5 }}
     >
       {nakshatras.map((item) => (
-        <Option key={item.id} variant="soft" color="neutral" value={item.id}>
+        <Option key={item.id} variant="soft" color="neutral" value={item.id} sx={{ px: 1, py: 0.5 }}>
           {item.name}
         </Option>
       ))}

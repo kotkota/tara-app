@@ -3,16 +3,15 @@ import FullCalendar from "@fullcalendar/react";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
 import rrulePlugin from "@fullcalendar/rrule";
-import { formatDate } from "../utils";
+import { formatDate } from "./utils";
 import { AppContext } from "./AppContext";
 
 import { events } from "../data/events";
 
-export function TaraCalendar() {
+export default function TaraCalendar() {
   const calendarRef = useRef();
 
-  const { periodStartDate, periodDuration, date, setDate } =
-    useContext(AppContext);
+  const { periodStartDate, period, setDate } = useContext(AppContext);
 
   const options = {
     plugins: [multiMonthPlugin, rrulePlugin, interactionPlugin],
@@ -28,13 +27,12 @@ export function TaraCalendar() {
           dtstart: formatDate(periodStartDate),
           until: "2024-01-01",
           freq: "daily",
-          interval: periodDuration,
+          interval: period.cycle,
         },
-        duration: "120:00:00",
+        duration: period.duration * 24 + ":00:00",
         display: "background",
         allDay: true,
         backgroundColor: "#ffdab9",
-        // color: "#deb887",
         classNames: "period",
       },
     ],
