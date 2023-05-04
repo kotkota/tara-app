@@ -1,5 +1,5 @@
 import { ReactComponent as MoonOutlined } from "../assets/icons/sleep_FILL0_wght300_GRAD0_opsz24.svg";
-import { ReactComponent as MoonFilled } from "../assets/icons/sleep_FILL1_wght300_GRAD0_opsz40.svg";
+import { ReactComponent as MoonFilled } from "../assets/icons/sleep_FILL1_wght300_GRAD0_opsz24.svg";
 import React, { useContext } from "react";
 import { Box, IconButton } from "@mui/joy";
 import { events } from "../data/events";
@@ -10,9 +10,7 @@ export default function InfoTheDay() {
 
   function updateTitles(date = Date.now()) {
     return {
-      dateStr: new Date(date).toLocaleString("ru", {
-        dateStyle: "long",
-      }),
+      dateStr: new Date(date).toLocaleString("ru", { dateStyle: "long" }),
       dateTitles: getStoredEventsByDate(date, events),
     };
   }
