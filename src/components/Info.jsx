@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { MhahPanchang } from "mhah-panchang";
 import InfoModule from "./InfoModule";
-import { events } from "../data/events";
 import { nakshatras } from "../data/nakshatra";
 import { tithis } from "../data/tithi";
 import { AppContext } from "./AppContext";
@@ -22,9 +21,7 @@ export default function Info() {
     let Nakshatra = panchang.Nakshatra;
     // console.log("panchang: ", panchang);
 
-    const dayTitles = getStoredEventsByDate(time_ms, events);
     const storedNakshatra = localStorage.getItem("nakshatra");
-    // const storedNakshatra = nakshatra;
 
     const taraBala = getTaraBala(Nakshatra.ino + 1, storedNakshatra);
     const nakshatra = nakshatras[Nakshatra.ino];
@@ -32,13 +29,6 @@ export default function Info() {
     // console.log("nakshatra ends: ", Nakshatra.end);
 
     return [
-      {
-        class: "module__wide today",
-        title: new Date(time_ms).toLocaleString("ru", {
-          dateStyle: "long",
-        }),
-        description: dayTitles,
-      },
       {
         class: "tithi",
         category: "Титхи",
@@ -67,28 +57,6 @@ export default function Info() {
         subTitle: formatDate(Nakshatra.end),
       },
     ];
-  }
-
-  function getStoredEventsByDate(date, events) {
-    const matchingEvents = events.filter((event) => {
-      const eventStartDate = new Date(event.start).toLocaleDateString();
-      const eventEndDate = new Date(event.end).toLocaleDateString();
-      const requestedDate = new Date(date).toLocaleDateString();
-      return eventStartDate === requestedDate || eventEndDate === requestedDate;
-    });
-
-    return matchingEvents.map((event) => event.title).join(". ");
-  }
-
-  function getCurrentTime(time_ms = new Date()) {
-    let time = new Date(time_ms);
-    if (time_ms.toString().length !== 13) {
-      time.setHours(12, 0);
-    }
-
-    console.log(`time: ${time.toLocaleString()}`);
-
-    return time;
   }
 
   function getTaraBala(todayNakshatra, userNakshatra) {

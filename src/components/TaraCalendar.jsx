@@ -4,6 +4,7 @@ import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
 import rrulePlugin from "@fullcalendar/rrule";
 import { formatDate } from "./utils";
+import InfoTheDay from "./InfoTheDay";
 import { AppContext } from "./AppContext";
 
 import { events } from "../data/events";
@@ -32,7 +33,7 @@ export default function TaraCalendar() {
         duration: period.duration * 24 + ":00:00",
         display: "background",
         allDay: true,
-        backgroundColor: "#ffdab9",
+        backgroundColor: "#ff7070",
         classNames: "period",
       },
     ],
@@ -62,5 +63,10 @@ export default function TaraCalendar() {
     calendarApi.select(date);
   };
 
-  return <FullCalendar ref={calendarRef} {...options} />;
+  return (
+    <div className="tara-calendar module__wide">
+      <FullCalendar ref={calendarRef} {...options} />
+      <InfoTheDay />
+    </div>
+  );
 }
