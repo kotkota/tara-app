@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import { MhahPanchang } from "mhah-panchang";
 import InfoModule from "./InfoModule";
 import { nakshatras } from "../data/nakshatra";
@@ -8,8 +8,9 @@ import { AppContext } from "./AppContext";
 let mhah = new MhahPanchang();
 
 export default function Info() {
-  const [texts, setTexts] = useState(getDayInfo());
-  const { date, nakshatra } = useContext(AppContext);
+  const { nakshatra, date } = useContext(AppContext);
+
+  const [texts, setTexts] = useState([]);
 
   useEffect(() => {
     setTexts(getDayInfo(date));
@@ -21,10 +22,10 @@ export default function Info() {
     let Nakshatra = panchang.Nakshatra;
     // console.log("panchang: ", panchang);
 
-    const storedNakshatra = localStorage.getItem("nakshatra");
-
+    // const storedNakshatra = localStorage.getItem("nakshatra");
+    const storedNakshatra = nakshatra;
     const taraBala = getTaraBala(Nakshatra.ino + 1, storedNakshatra);
-    const nakshatra = nakshatras[Nakshatra.ino];
+    const todayNakshatra = nakshatras[Nakshatra.ino];
     const tithi = tithis[Tithi.ino];
     // console.log("nakshatra ends: ", Nakshatra.end);
 
@@ -32,8 +33,22 @@ export default function Info() {
       {
         class: "tithi",
         category: "Титхи",
-        categoryDescription:
-          "<p>Титхи — это лунный день. В ведической астрологии титхи пронумерованы от 1 до 15 до полнолуния и от 1 до 15 после полнолуния. Например, 15 стрелочка вниз будет означать 30-й лунный день, а 15 стрелочка вверх — полнолуние.</p><p>Растущая луна, стрелочка вверх.</p><p>Убывающая луна, стрелочка вниз.</p><h4>Тип титхи</h4><p>Нанда, Бхадра, Джайя, Рикта, Пурна — 5 типов титхи, которые следуют один за одним и задают дополнительный ритм лунному циклу.</p><p>Нанда — счастье, умиротворение, праздник</p><p>Бхадра — успех, мудрость, богатство, польза</p><p>Джайя — победа, триумф, высшие достижения</p><p>Рикта — пустые руки, избавление от лишнего, ненужного</p><p>Пурна — полнота, завершение цикла, сбор урожая.</p><p>Выстраивания рода занятий по типу титхи позволит вам сонастроиться с природным законам и гармонизировать свою жизнь во всех сферах.</p><p>Особенно я рекомендую уделить внимание типу титхи риктха — избавление от ненужного часто может быть болезненным процессом и потому требует особого фокуса.</p>",
+        categoryDescription: `
+        <p>Титхи&nbsp;— это лунный день. В&nbsp;ведической астрологии титхи пронумерованы от&nbsp;1 до&nbsp;15 до&nbsp;полнолуния и&nbsp;от&nbsp;1 до&nbsp;15 после полнолуния. Например, 15 стрелочка вниз будет означать 30-й лунный день, а&nbsp;15 стрелочка вверх&nbsp;— полнолуние.</p>
+        <p>Растущая луна, стрелочка вверх.</p>
+        <p>Убывающая луна, стрелочка вниз.</p>
+        <h4>Тип титхи</h4>
+        <p>Нанда, Бхадра, Джайя, Рикта, Пурна&nbsp;— 5 типов титхи, которые следуют один за&nbsp;одним и&nbsp;задают дополнительный ритм лунному циклу.</p>
+        <div class="highlight">
+          <p><strong>Нанда</strong>&nbsp;— счастье, умиротворение, праздник</p>
+          <p><strong>Бхадра</strong>&nbsp;— успех, мудрость, богатство, польза</p>
+          <p><strong>Джайя</strong>&nbsp;— победа, триумф, высшие достижения</p>
+          <p><strong>Рикта</strong>&nbsp;— пустые руки, избавление от&nbsp;лишнего, ненужного</p>
+          <p><strong>Пурна</strong>&nbsp;— полнота, завершение цикла, сбор урожая.</p>
+        </div>
+        <p>Выстраивания рода занятий по&nbsp;типу титхи позволит вам сонастроиться с&nbsp;природным законам и&nbsp;гармонизировать свою жизнь во&nbsp;всех сферах.</p>
+        <p>Особенно я&nbsp;рекомендую уделить внимание типу титхи риктха&nbsp;— избавление от&nbsp;ненужного часто может быть болезненным процессом и&nbsp;потому требует особого фокуса.</p>
+        `,
         title: tithi.name,
         titleExtra: tithi.number,
         description: `${tithi.type_description}. ${tithi.curator_description} `,
@@ -50,10 +65,11 @@ export default function Info() {
       {
         class: "module__wide nakshatra",
         category: "Накшатра",
-        categoryDescription: "Страп-он, фраппе, крапива, пряники…",
-        title: nakshatra.name,
-        titleExtra: nakshatra.ruler,
-        description: nakshatra.description,
+        categoryDescription:
+          "<p>В скобках от названия накшатры указан её управитель, который сразу дает нам понимание того, как и зачем накшатра действует, распаковывая самскары (отпечатки прошлого) в нашем сознании.</p>",
+        title: todayNakshatra.name,
+        titleExtra: todayNakshatra.ruler,
+        description: todayNakshatra.description,
         subTitle: formatDate(Nakshatra.end),
       },
     ];
