@@ -32,7 +32,8 @@ body {
   gap: 10px;
 }
 .module {
-  flex: 1 1 calc(50% - 20px);
+  /* flex: 1 1 calc(50% - 20px); */
+  flex: 1 1 9em;
   border-radius: 6px;
   padding: 5px 10px 5px;
   background: rgba(255, 255, 255, 0.02);
@@ -53,7 +54,9 @@ body {
 .today .module_title {
   margin: 0;
 }
-
+.tarabala {
+  flex-grow: 0;
+}
 .module__wide {
   flex-basis: 100%;
 }
@@ -90,6 +93,18 @@ body {
 }
 .today .module_description {
   font-size: clamp(12px, 3vw, 15px);
+}
+.highlight {
+  padding: 0.5em 0.75em 0.5em;
+  margin-left: -0.75em;
+  margin-right: -0.75em;
+  background: var(--fc-today-bg-color);
+  border-radius: 5px;
+}
+.highlight strong {
+  font-family: var(--display-font);
+  font-weight: 500;
+  font-size: 95%;
 }
 .fc .fc-multimonth-singlecol .fc-multimonth-daygrid {
   padding-top: 3px;
@@ -163,6 +178,10 @@ body {
   height: calc(11em + 180px);
   box-shadow: 0 5px 20px -10px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
+  transition: height 0.5s ease-in-out;
+}
+.fc.fullheight {
+  height: calc(100vh - 9em);
 }
 .fc table {
   height: auto !important;
@@ -249,13 +268,13 @@ body {
   font-family: var(--display-font);
   font-weight: 400;
 }
-#modal-dialog-description > * {
+#modal-dialog-description * {
   margin-bottom: 0.5em;
 }
-#modal-dialog-description > :first-child {
+#modal-dialog-description :first-child {
   margin-top: 0;
 }
-#modal-dialog-description > * + p {
+#modal-dialog-description * + p {
   margin-top: 0.5em;
 }
 [class*="JoyIconButton"] {
