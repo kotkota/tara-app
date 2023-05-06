@@ -2,11 +2,13 @@ import { ReactComponent as MoonOutlined } from "../assets/icons/sleep_FILL0_wght
 import { ReactComponent as MoonFilled } from "../assets/icons/sleep_FILL1_wght300_GRAD0_opsz24.svg";
 import React, { useContext } from "react";
 import { Box, IconButton } from "@mui/joy";
+import { formatDate } from "./utils";
 import { events } from "../data/events";
 import { AppContext } from "./AppContext";
 
 export default function InfoTheDay() {
-  const { date, periodStartDate, setPeriodStartDate } = useContext(AppContext);
+  const { date, setDate, periodStartDate, setPeriodStartDate } =
+    useContext(AppContext);
 
   function updateTitles(date = Date.now()) {
     return {
@@ -27,6 +29,9 @@ export default function InfoTheDay() {
   }
 
   function toggleDate() {
+    const selectedDate = formatDate(date);
+    setPeriodStartDate(selectedDate);
+    localStorage.setItem("periodStartDate", selectedDate);
     console.log("boop");
   }
 
