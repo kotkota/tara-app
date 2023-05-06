@@ -38,7 +38,7 @@ body {
   position: relative;
 }
 .today::before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   inset: -25px 0 0;
@@ -46,7 +46,9 @@ body {
   background-color: ivory;
   z-index: -2;
 }
-.today .module_title {margin: 0}
+.today .module_title {
+  margin: 0;
+}
 
 .module__wide {
   flex-basis: 100%;
@@ -236,7 +238,7 @@ body {
   margin: 0;
 }
 [class*="JoyModal-backdrop"] {
-  backdrop-filter: blur(1px) !important;
+  backdrop-filter: blur(2px) !important;
 }
 [class*="JoyIconButton"] {
   padding-inline: 0 !important;
@@ -256,6 +258,6 @@ h5 {
   --joy-fontFamily-body: var(--base-font);
   --IconButton-margin: -5px -5px -4px;
   --IconButton-radius: 50%;
-  --joy-palette-background-backdrop: rgba(0, 0, 0, 0.5);
+  --joy-palette-background-backdrop: rgb(47 79 79 / 50%);
   --IconButton-size: 20px;
 }
