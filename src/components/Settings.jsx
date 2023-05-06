@@ -74,7 +74,9 @@ export default function SettingsPanel() {
             </Typography>
             <Divider inset="none" color="primary" />
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography component="h6">Tara Pro</Typography>
+              <Typography level="label" fontWeight="md" fontSize="md">
+                Tara Pro
+              </Typography>
               <Switch
                 checked={true}
                 color="neutral"
@@ -90,7 +92,9 @@ export default function SettingsPanel() {
                 alignItems: "center",
               }}
             >
-              <Typography component="h6">Накшатра Луны</Typography>
+              <Typography level="label" fontWeight="md" fontSize="md">
+                Накшатра Луны
+              </Typography>
               <SelectNakshatra />
             </Box>
             <Box
@@ -100,7 +104,9 @@ export default function SettingsPanel() {
                 alignItems: "center",
               }}
             >
-              <Typography component="h6">Продолжительность цикла</Typography>
+              <Typography level="label" fontWeight="md" fontSize="md">
+                Продолжительность цикла
+              </Typography>
               <SelectPeriod />
             </Box>
           </Sheet>

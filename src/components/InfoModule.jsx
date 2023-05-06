@@ -34,13 +34,26 @@ export default function InfoModule({ text }) {
       <p className="module_description">{text.description}</p>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <ModalDialog
+          aria-labelledby="modal-dialog-title"
+          aria-describedby="modal-dialog-description"
           size="sm"
           variant="plain"
-          sx={(theme) => ({ boxShadow: theme.shadow.xs })}
+          sx={(theme) => ({
+            boxShadow: theme.shadow.xs,
+            maxWidth: 430,
+            width: "calc(100vw - 40px)",
+            overflow: "scroll",
+          })}
         >
           <ModalClose />
-          <Typography level="h5">{text.category}</Typography>
-          <Typography level="body">{text.categoryDescription}</Typography>
+          <Typography id="modal-dialog-title" level="h3">
+            {text.category}
+          </Typography>
+          <div
+            id="modal-dialog-description"
+            level="body"
+            dangerouslySetInnerHTML={{ __html: text.categoryDescription }}
+          />
         </ModalDialog>
       </Modal>
     </div>
