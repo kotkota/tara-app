@@ -1,6 +1,15 @@
 import { ReactComponent as AddIcon } from "../assets/icons/add_FILL0_wght300_GRAD0_opsz24.svg";
-import React, { useContext } from "react";
-import { Box, IconButton } from "@mui/joy";
+import { ReactComponent as ResetIcon } from "../assets/icons/device_reset_FILL1_wght300_GRAD0_opsz24.svg";
+import React, { useContext, useState } from "react";
+import {
+  Box,
+  Button,
+  IconButton,
+  Modal,
+  ModalDialog,
+  ModalClose,
+  Typography,
+} from "@mui/joy";
 import { formatDate } from "./utils";
 import { events } from "../data/events";
 import { AppContext } from "./AppContext";
@@ -8,8 +17,10 @@ import { AppContext } from "./AppContext";
 export default function InfoTheDay() {
   const { date, setDate, periodStartDate, setPeriodStartDate } =
     useContext(AppContext);
+  const [isOpen, setIsOpen] = useState(false);
 
   function updateTitles(date = Date.now()) {
+    // console.log("boop", typeof date, date, formatDate(Date.now()));
     return {
       dateStr: new Date(date).toLocaleString("ru", { dateStyle: "long" }),
       dateTitles: getStoredEventsByDate(date, events),
@@ -23,7 +34,6 @@ export default function InfoTheDay() {
       const requestedDate = new Date(date).toLocaleDateString();
       return eventStartDate === requestedDate || eventEndDate === requestedDate;
     });
-
     return matchingEvents.map((event) => event.title).join(". ");
   }
 
@@ -31,23 +41,76 @@ export default function InfoTheDay() {
     const selectedDate = formatDate(date);
     setPeriodStartDate(selectedDate);
     localStorage.setItem("periodStartDate", selectedDate);
-    console.log("boop");
   }
+
+  let titles = updateTitles(date);
 
   return (
     <div className="module today">
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <h3 className="module_title">{updateTitles(date).dateStr}</h3>
-        <IconButton
-          variant="plain"
-          color="transparent"
-          size="sm"
-          onClick={() => saveTheDate()}
-        >
-          <AddIcon fill="darkseagreen" />
-        </IconButton>
+        <h3 className="module_title">{titles.dateStr}</h3>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          {typeof date == "string" ? (
+            <IconButton
+              variant="plain"
+              color="transparent"
+              size="sm"
+              onClick={() => setDate(Date.now())}
+              sx={{ mr: 1.5 }}
+            >
+              <ResetIcon fill="darkseagreen" />
+            </IconButton>
+          ) : null}
+          <IconButton
+            variant="plain"
+            color="transparent"
+            size="sm"
+            onClick={() => setIsOpen(true)}
+          >
+            <AddIcon fill="darkseagreen" />
+          </IconButton>
+        </Box>
       </Box>
-      <p className="module_description">{updateTitles(date).dateTitles}</p>
+      <p className="module_description">{titles.dateTitles}</p>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalDialog
+          aria-labelledby="modal-dialog-title"
+          aria-describedby="modal-dialog-description"
+          size="md"
+          variant="plain"
+          sx={(theme) => ({
+            boxShadow: theme.shadow.xs,
+            maxWidth: 430,
+            width: "calc(100vw - 40px)",
+          })}
+        >
+          {/* <ModalClose /> */}
+          <Typography id="modal-dialog-title" level="h3">
+            Отметить начало месячных?
+          </Typography>
+          <Box
+            sx={{ display: "flex", gap: 1, justifyContent: "flex-end", pt: 2 }}
+          >
+            <Button
+              variant="plain"
+              color="neutral"
+              onClick={() => setIsOpen(false)}
+            >
+              Нет
+            </Button>
+            <Button
+              variant="soft"
+              color="success"
+              onClick={() => {
+                saveTheDate();
+                setIsOpen(false);
+              }}
+            >
+              Отметить
+            </Button>
+          </Box>
+        </ModalDialog>
+      </Modal>
     </div>
   );
 }
