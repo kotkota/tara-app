@@ -3,7 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
 import rrulePlugin from "@fullcalendar/rrule";
-import { formatDate } from "./utils";
+import { formatDate, addDays } from "./utils";
 import InfoTheDay from "./InfoTheDay";
 import { AppContext } from "./AppContext";
 
@@ -25,7 +25,7 @@ export default function TaraCalendar() {
         title: "Period",
         rrule: {
           // dtstart: "2023-03-30",
-          dtstart: formatDate(periodStartDate),
+          dtstart: periodStartDate,
           until: "2024-01-01",
           freq: "daily",
           interval: period.cycle,
@@ -35,6 +35,24 @@ export default function TaraCalendar() {
         allDay: true,
         backgroundColor: "#ff7070",
         classNames: "period",
+      },
+      {
+        title: "Ovulation",
+        rrule: {
+          // dtstart: "2023-03-30",
+          dtstart: addDays(
+            periodStartDate,
+            period.duration - 1 + (period.cycle - period.duration) / 2
+          ),
+          until: "2024-01-01",
+          freq: "daily",
+          interval: period.cycle,
+        },
+        duration: 3 * 24 + ":00:00",
+        display: "background",
+        allDay: true,
+        backgroundColor: "#bcfca2",
+        classNames: "ovulation",
       },
     ],
     selectable: true,
