@@ -1,7 +1,7 @@
 :root {
   --accent-color: darkseagreen;
   --bg-color: darkslategray;
-  --fc-today-bg-color: rgb(103 255 40 / 15%);
+  --fc-today-bg-color: rgb(130 240 255 / 25%);
   --base-font: Montserrat, sans-serif;
   --display-font: Unbounded, sans-serif;
 }
@@ -19,8 +19,10 @@ body {
   font-family: var(--display-font);
 }
 @media (orientation: landscape) {
-  body {
-    padding: 10px;
+  body,
+  .MuiModalDialog-root {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 .container {
@@ -106,6 +108,7 @@ body {
   font-weight: 500;
   font-size: 95%;
 }
+
 .fc .fc-multimonth-singlecol .fc-multimonth-daygrid {
   padding-top: 3px;
 }
@@ -134,24 +137,43 @@ body {
   opacity: 0.25;
   background: transparent;
 }
-.period.fc-bg-event {
+.fc-bg-event {
   top: 1px;
   bottom: initial;
   height: 2.15em;
 }
-.period.fc-event-start {
+.fc-event-start {
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
+}
+.fc-event-end {
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+.period.fc-event-start {
   background-image: linear-gradient(90deg, #fff1ac, transparent 150px);
 }
 .period.fc-event-end {
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
   background-image: linear-gradient(-90deg, #fff1ac, transparent 150px);
 }
-.period.fc-event-end.period.fc-event-start {
+.period.fc-event-end.fc-event-start {
   background-image: linear-gradient(90deg, #fff1ac, transparent 150px),
     linear-gradient(-90deg, #fff1ac, transparent 150px);
+}
+.ovulation.fc-event-start {
+  background-image: linear-gradient(90deg, #eafff5, transparent 50px);
+}
+.ovulation.fc-event-end {
+  background-image: linear-gradient(-90deg, #eafff5, transparent 50px);
+}
+.ovulation.fc-event-end.fc-event-start {
+  background-image: linear-gradient(
+    90deg,
+    #eafff5,
+    transparent 30%,
+    transparent 70%,
+    #eafff5
+  );
 }
 .fc .fc-highlight {
   inset: -3px 3px 3px;
@@ -171,7 +193,7 @@ body {
 .fc {
   color: black;
   background-color: white;
-  font-size: clamp(12px, 2vw + 3px, 14px);
+  font-size: clamp(12px, 2vw + 3px, 13px);
   width: max(280px, 40vw);
   width: 100%;
   height: clamp(260px, 65vw, 400px);
@@ -246,6 +268,13 @@ body {
 }
 .fc .fc-daygrid-day.fc-day-today:before {
   background-color: var(--fc-today-bg-color);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--fc-today-bg-color),
+    var(--fc-today-bg-color) 2px,
+    transparent 2px,
+    transparent 5px
+  );
   content: "";
   position: absolute;
   inset: -3px 3px 3px;
@@ -254,6 +283,32 @@ body {
 
 .eclipse .fc-daygrid-event-dot {
   box-shadow: 0 0 0 1px white, 0 0 5px 2px orange;
+}
+
+@media (min-width: 680px) {
+  .container {
+    width: clamp(680px, 100%, 800px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "header header"
+      "cal ."
+      "cal ."
+      "cal .";
+  }
+  .tara-calendar {
+    grid-area: cal;
+  }
+  .fc {
+    height: unset;
+    transition: unset;
+  }
+  .tara-header {
+    grid-area: header;
+  }
+  .tara-settings .MuiModal-backdrop {
+    background-color: var(--bg-color);
+  }
 }
 
 /* mui */

@@ -23,6 +23,7 @@ export default function SettingsPanel() {
   return (
     <>
       <Box
+        className="tara-header"
         sx={{
           display: "flex",
           justifyContent: "space-between",
@@ -40,7 +41,11 @@ export default function SettingsPanel() {
           <SettingsIcon fill="darkseagreen" />
         </IconButton>
       </Box>
-      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+      <Modal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        className="tara-settings"
+      >
         <ModalDialog
           layout="fullscreen"
           variant="solid"

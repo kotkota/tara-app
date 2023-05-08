@@ -27,7 +27,7 @@ export default function InfoTheDay() {
     return matchingEvents.map((event) => event.title).join(". ");
   }
 
-  function toggleDate() {
+  function saveTheDate() {
     const selectedDate = formatDate(date);
     setPeriodStartDate(selectedDate);
     localStorage.setItem("periodStartDate", selectedDate);
@@ -42,7 +42,7 @@ export default function InfoTheDay() {
           variant="plain"
           color="transparent"
           size="sm"
-          onClick={() => toggleDate()}
+          onClick={() => saveTheDate()}
         >
           <AddIcon fill="darkseagreen" />
         </IconButton>
