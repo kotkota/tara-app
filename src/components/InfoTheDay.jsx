@@ -20,7 +20,7 @@ export default function InfoTheDay() {
   const [isOpen, setIsOpen] = useState(false);
 
   function updateTitles(date = Date.now()) {
-    console.log("boop", typeof date, date, formatDate(Date.now()));
+    // console.log("boop", typeof date, date, formatDate(Date.now()));
     return {
       dateStr: new Date(date).toLocaleString("ru", { dateStyle: "long" }),
       dateTitles: getStoredEventsByDate(date, events),
