@@ -190,6 +190,16 @@ body {
 .fc-daygrid-event-dot {
   transform: translateY(90%);
 }
+.suryasankranti .fc-daygrid-event-dot {
+  border: none;
+}
+.suryasankranti .fc-daygrid-event-dot::before {
+  content: "✦";
+  color: firebrick;
+  font-size: 120%;
+  position: absolute;
+  transform: translateX(-50%);
+}
 .fc {
   color: black;
   background-color: white;
