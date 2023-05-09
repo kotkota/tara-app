@@ -86,7 +86,7 @@ export default function InfoTheDay() {
         >
           {/* <ModalClose /> */}
           <Typography id="modal-dialog-title" level="h3">
-            Отметить начало месячных?
+            Отметить начало цикла?
           </Typography>
           <Box
             sx={{ display: "flex", gap: 1, justifyContent: "flex-end", pt: 2 }}
