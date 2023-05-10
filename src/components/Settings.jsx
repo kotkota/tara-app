@@ -33,6 +33,7 @@ export default function SettingsPanel() {
       >
         <Logo fill="darkseagreen" width="120" style={{ marginLeft: "-8px" }} />
         <IconButton
+          aria-label="Открыть настройки"
           variant="plain"
           sx={{ m: 0 }}
           onClick={() => setIsOpen(true)}

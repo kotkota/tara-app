@@ -18,6 +18,7 @@ export default function InfoModule({ text }) {
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <h5 className="module_category">{text.category}</h5>
           <IconButton
+            aria-label={`Что такое ${text.category}?`}
             variant="plain"
             color="transparent"
             size="sm"
