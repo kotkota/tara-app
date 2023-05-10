@@ -52,6 +52,7 @@ export default function InfoTheDay() {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           {typeof date == "string" ? (
             <IconButton
+              aria-label="Вернуть текущий момент"
               variant="plain"
               color="transparent"
               size="sm"
@@ -62,6 +63,7 @@ export default function InfoTheDay() {
             </IconButton>
           ) : null}
           <IconButton
+            aria-label="Добавить начало периода"
             variant="plain"
             color="transparent"
             size="sm"
