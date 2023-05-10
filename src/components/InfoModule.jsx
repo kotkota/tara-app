@@ -16,7 +16,7 @@ export default function InfoModule({ text }) {
     <div className={`module ${text.class}`}>
       {text.category && (
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <h5 className="module_category">{text.category}</h5>
+          <span className="module_category">{text.category}</span>
           <IconButton
             aria-label={`Что такое ${text.category}?`}
             variant="plain"
