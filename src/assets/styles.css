@@ -308,10 +308,16 @@ body {
   }
   .tara-calendar {
     grid-area: cal;
+    display: flex;
+    flex-direction: column;
   }
   .fc {
     height: unset;
     transition: unset;
+    flex: 1;
+  }
+  .today {
+    flex: 0;
   }
   .tara-header {
     grid-area: header;
