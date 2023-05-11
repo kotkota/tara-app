@@ -292,7 +292,7 @@ body {
 }
 
 .eclipse .fc-daygrid-event-dot {
-  box-shadow: 0 0 0 1px white, 0 0 5px 2px orange;
+  box-shadow: 0 0 0 0.75px white, 0 0 6px 3px darkorange;
 }
 
 @media (min-width: 680px) {
@@ -370,4 +370,5 @@ h5 {
   --IconButton-radius: 50%;
   --joy-palette-background-backdrop: rgb(47 79 79 / 50%);
   --IconButton-size: 20px;
+  --joy-radius-sm: 6px;
 }
