@@ -292,7 +292,7 @@ body {
 }
 
 .eclipse .fc-daygrid-event-dot {
-  box-shadow: 0 0 0 0.75px white, 0 0 6px 3px darkorange;
+  box-shadow: 0 0 0 0.75px white, 0 0 6px 2px orange;
 }
 
 @media (min-width: 680px) {
