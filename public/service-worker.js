@@ -2,10 +2,10 @@ const CACHE_NAME = "my-app-cache";
 
 const urlsToCache = [
   "/",
-  `%PUBLIC_URL%/index.html`,
-  `%PUBLIC_URL%/static/css/main.*.css`,
-  `%PUBLIC_URL%/static/js/main.*.js`,
-  `%PUBLIC_URL%/images/icon-512x512.png`,
+  `/index.html`,
+  `/static/css/main.css`,
+  `/static/js/main.js`,
+  `/images/icon-512x512.png`,
 ];
 
 self.addEventListener("install", (event) => {
