@@ -9,5 +9,5 @@ const root = ReactDOMClient.createRoot(container);
 
 root.render(<App />);
 
-serviceWorkerRegistration.unregister();
+serviceWorkerRegistration.register();
 reportWebVitals();
