@@ -90,11 +90,17 @@ body {
 .module_description {
   font-family: var(--base-font);
   font-weight: 300;
-  font-size: clamp(10.5px, 2.75vw, 14px);
+  /* font-size: clamp(10.5px, 2.75vw, 14px); */
+  font-size: 12px;
   line-height: 1.4;
 }
-.today .module_description {
+/* .today .module_description {
   font-size: clamp(12px, 3vw, 15px);
+} */
+@media (min-width: 414px) {
+  .module_description {
+    font-size: 14px;
+  }
 }
 .highlight {
   padding: 0.5em 0.75em 0.5em;
@@ -203,7 +209,8 @@ body {
 .fc {
   color: black;
   background-color: white;
-  font-size: clamp(12px, 2vw + 3px, 13px);
+  /* font-size: clamp(12px, 2vw + 3px, 13px); */
+  font-size: 12px;
   width: max(280px, 40vw);
   width: 100%;
   height: clamp(260px, 65vw, 400px);
@@ -211,6 +218,11 @@ body {
   box-shadow: 0 5px 20px -10px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   transition: height 0.5s ease-in-out;
+}
+@media (min-width: 414px) {
+  .fc {
+    font-size: 13px;
+  }
 }
 .fc.fullheight {
   height: calc(100vh - 9em);
