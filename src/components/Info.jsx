@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { MhahPanchang } from "mhah-panchang";
 import InfoModule from "./InfoModule";
 import { nakshatras } from "../data/nakshatra";
