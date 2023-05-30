@@ -1,13 +1,15 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, lazy, Suspense } from "react";
 import FullCalendar from "@fullcalendar/react";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
 import rrulePlugin from "@fullcalendar/rrule";
-import { formatDate, addDays } from "./utils";
+import { addDays } from "./utils";
 import InfoTheDay from "./InfoTheDay";
 import { AppContext } from "./AppContext";
 
 import { events } from "../data/events";
+
+// const FullCalendar = lazy(() => import("@fullcalendar/react"));
 
 export default function TaraCalendar() {
   const calendarRef = useRef();

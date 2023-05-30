@@ -7,7 +7,6 @@ import {
   IconButton,
   Modal,
   ModalDialog,
-  ModalClose,
   Typography,
 } from "@mui/joy";
 import { formatDate } from "./utils";
@@ -86,7 +85,6 @@ export default function InfoTheDay() {
             width: "calc(100vw - 40px)",
           })}
         >
-          {/* <ModalClose /> */}
           <Typography id="modal-dialog-title" level="h3">
             Отметить начало цикла?
           </Typography>
