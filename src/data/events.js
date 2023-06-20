@@ -153,14 +153,14 @@ export const events = [
     title: "Солнцестояние",
     description:
       "In the northern hemisphere, this marks the first day of summer and is the day with most hours of light in the year -- when the Sun is farthest north. In the southern hemisphere, this is your winter solstice, marking the shortest day of the year.\n\n21 June will be the longest day of 2022 in the northern hemisphere. ",
-    start: "2023-06-21T15:58:19-06:00",
+    start: "2023-06-21T14:57:19Z",
     classNames: "solstice",
   },
   {
     title: "Равноденствие",
     description:
       "This is the date when night and day are most nearly the same length. If you live in the northern hemisphere, happy first day of spring! In the southern hemisphere, the vernal equinox corresponds to the first day of fall.",
-    start: "2023-03-20T15:24:00-06:00",
+    start: "2023-03-20T15:24:00+01:00",
     classNames: "equinox",
   },
   {
@@ -174,7 +174,7 @@ export const events = [
     title: "Солнцестояние",
     description:
       "This marks the beginning of winter (in the northern hemisphere) and the beginning of summer (in the southern hemisphere.) The winter solstice is the shortest day of the year, respectively, in the sense that the length of time elapsed between sunrise and sunset on this day is a minimum for the year. Of course, daylight saving time means that the first Sunday in April has 23 hours and the last Sunday in October has 25 hours, but these human meddlings with the calendar and do not correspond to the actual number of daylight hours. \n\nIf you live in the southern hemisphere, this is your Summer Solstice, and good cause for celebrating the longest day of the year.",
-    start: "2023-12-21T20:27:38-07:00",
+    start: "2023-12-22T03:27:38Z",
     classNames: "solstice",
   },
   {
