@@ -72,8 +72,8 @@ export default function TaraCalendar() {
     // },
     viewDidMount: (view) => {},
     dateClick: (info) => {
-      console.log(info.dateStr);
-      setDate(info.dateStr);
+      console.log(info.dateStr, new Date(info.dateStr).setHours(12));
+      setDate(new Date(info.dateStr).setHours(12));
       handleTap(info.dateStr);
     },
   };
