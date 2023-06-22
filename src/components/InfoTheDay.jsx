@@ -49,7 +49,8 @@ export default function InfoTheDay() {
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <h3 className="module_title">{titles.dateStr}</h3>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          {typeof date == "string" ? (
+          {/* ес */}
+          {new Date(date).toDateString() != new Date().toDateString() ? (
             <IconButton
               aria-label="Вернуть текущий момент"
               variant="plain"
