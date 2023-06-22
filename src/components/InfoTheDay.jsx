@@ -49,8 +49,8 @@ export default function InfoTheDay() {
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <h3 className="module_title">{titles.dateStr}</h3>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          {/* ес */}
           {new Date(date).toDateString() != new Date().toDateString() ? (
+            /* если выбранная дата отличается от сегодня */
             <IconButton
               aria-label="Вернуть текущий момент"
               variant="plain"
