@@ -71,7 +71,7 @@ export default function Info() {
         subTitle: formatDate(Nakshatra.end),
       },
       {
-        class: "tarabala",
+        class: "tarabala module__wide",
         category: "Тара Бала",
         categoryDescription:
           "Тара бала — это индивидуальные рекомендации на каждый день, рассчитываемые исходя из взаимоотношения накшатры дня и накшатры Луны вашего рождения.",
