@@ -79,7 +79,7 @@ export default function SettingsPanel() {
               Настройки
             </Typography>
             <Divider inset="none" color="primary" />
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            {/* <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography level="label" fontWeight="md" fontSize="md">
                 Tara Pro
               </Typography>
@@ -90,7 +90,7 @@ export default function SettingsPanel() {
                 size="sm"
                 variant="soft"
               />
-            </Box>
+            </Box> */}
             <Box
               sx={{
                 display: "flex",
