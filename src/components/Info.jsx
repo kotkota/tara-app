@@ -16,8 +16,10 @@ export default function Info() {
     setTexts(getDayInfo(date));
   }, [date, nakshatra]);
 
-  function getDayInfo(time_ms = Date.now()) {
-    let panchang = mhah.calculate(new Date(time_ms));
+  function getDayInfo(time_ms) {
+    const chosenDate = new Date(time_ms);
+    console.log(typeof time_ms, time_ms, chosenDate.toTimeString());
+    let panchang = mhah.calculate(chosenDate);
     let Tithi = panchang.Tithi;
     let Nakshatra = panchang.Nakshatra;
     // console.log("panchang: ", panchang);
@@ -27,7 +29,7 @@ export default function Info() {
     const taraBala = getTaraBala(Nakshatra.ino + 1, storedNakshatra);
     const todayNakshatra = nakshatras[Nakshatra.ino];
     const tithi = tithis[Tithi.ino];
-    // console.log("nakshatra ends: ", Nakshatra.end);
+    console.log("panchang: ", panchang);
 
     return [
       {
@@ -56,7 +58,7 @@ export default function Info() {
         class: "tarabala",
         category: "Тара Бала",
         categoryDescription:
-          "Тара-Бала — это сила накшатры. Она отражает благоприятность или неблагоприятность периода текущей накшатры. Рассчитывается индивидуально на основе натального положения Луны.",
+          "Тара бала — это индивидуальные рекомендации на каждый день, рассчитываемые исходя из взаимоотношения накшатры дня и накшатры Луны вашего рождения.",
         title: taraBala.name,
         titleExtra: "",
         description: taraBala.description,
@@ -82,19 +84,27 @@ export default function Info() {
 
   function getTaraBala(todayNakshatra, userNakshatra) {
     let result;
+    // const tb = [
+    //   { name: "Джанма", description: "Опасность для тела" },
+    //   { name: "Сампат", description: "Богатство и процветание. Благоприятно" },
+    //   { name: "Випат", description: "Потери и несчастные случаи" },
+    //   { name: "Кшема", description: "Процветание. Благоприятно" },
+    //   { name: "Пратйак", description: "Препятствия и затруднение" },
+    //   { name: "Садхана", description: "Реализация притязаний. Очень хорошо" },
+    //   { name: "Наидхана", description: "Опасности, несчастные случаи" },
+    //   { name: "Митра", description: "Указывает хорошее. Благоприятно" },
+    //   { name: "Парама митра", description: "Лучший друг. Очень благоприятно" },
+    // ];
     const tb = [
-      { name: "Джанма", description: "Опасность для тела" },
-      { name: "Сампат", description: "Богатство и процветание. Благоприятно" },
-      { name: "Випат", description: "Потери и несчастные случаи" },
-      { name: "Кшема", description: "Процветание. Благоприятно" },
-      { name: "Пратйак", description: "Препятствия и затруднение" },
-      { name: "Садхана", description: "Реализация притязаний. Очень хорошо" },
-      {
-        name: "Наидхана",
-        description: "Опасности, несчастные случаи",
-      },
-      { name: "Митра", description: "Указывает хорошее. Благоприятно" },
-      { name: "Парама митра", description: "Лучший друг. Очень благоприятно" },
+      { name: "Джанма", description: "Как насчет того, чтобы сегодня не рисковать и насладиться рутиной?" },
+      { name: "Сампат", description: "Как насчет того, чтобы сегодня сделать что-то, что приведет к увеличению благосостояния?" },
+      { name: "Випат", description: "Как насчет того, чтобы отложить сегодня важные дела и посвятить время себе?" },
+      { name: "Кшема", description: "Как насчет того, чтобы сегодня действовать по плану во имя исполнения своих желаний и светлого будущего?" },
+      { name: "Пратйак", description: "Как насчет того, чтобы отложить сегодня важные дела и посвятить время себе?" },
+      { name: "Садхана", description: "Как насчет того, чтобы сделать именно сегодня что-то важное во имя исполнения своих желаний?" },
+      { name: "Наидхана", description: "Как насчет того, чтобы сегодня заняться рутинными делами и насладиться процессом, не ожидая немедленного результата?" },
+      { name: "Митра", description: "Как насчет того, чтобы привнести в сегодняшние дела хорошее настроение и благость?" },
+      { name: "Парама митра", description: "Как насчет того, чтобы сделать сегодня что-то важное для реализации желаемой цели?" },
     ];
     // console.log("userNakshatra", userNakshatra);
     if (isNaN(userNakshatra) || userNakshatra == null) {
