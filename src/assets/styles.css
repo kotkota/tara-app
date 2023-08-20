@@ -61,7 +61,7 @@ body {
   flex-basis: 100%;
 }
 .module > * {
-  margin: 0.4em 0;
+  margin: 0.35rem 0;
 }
 .module_category {
   color: var(--accent-color);
@@ -92,6 +92,10 @@ body {
   font-size: 12px;
   line-height: 1.4;
 }
+.module_description:empty {
+  display: none;
+}
+
 /* .today .module_description {
   font-size: clamp(12px, 3vw, 15px);
 } */
