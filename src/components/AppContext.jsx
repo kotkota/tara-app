@@ -7,8 +7,7 @@ export function AppContextProvider({ children }) {
   const [nakshatra, setNakshatra] = useState(
     localStorage.getItem("nakshatra") || null
   );
-  // const [date, setDate] = useState(() => Date.now());
-  const [date, setDate] = useState(() => 1689582400000);
+  const [date, setDate] = useState(() => Date.now());
   const [period, setPeriod] = useState(
     JSON.parse(localStorage.getItem("period")) || { cycle: 29, duration: 5 }
   );
