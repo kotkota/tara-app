@@ -1,40 +1,40 @@
-import React, { useState, useEffect, useContext } from "react";
-import { MhahPanchang } from "mhah-panchang";
-import InfoModule from "./InfoModule";
-import { nakshatras } from "../data/nakshatra";
-import { tithis } from "../data/tithi";
-import { AppContext } from "./AppContext";
+import React, { useState, useEffect, useContext } from 'react'
+import { MhahPanchang } from 'mhah-panchang'
+import InfoModule from './InfoModule'
+import { nakshatras } from '../data/nakshatra'
+import { tithis } from '../data/tithi'
+import { AppContext } from './AppContext'
 
-let mhah = new MhahPanchang();
+let mhah = new MhahPanchang()
 
 export default function Info() {
-  const { nakshatra, date } = useContext(AppContext);
+  const { nakshatra, date } = useContext(AppContext)
 
-  const [texts, setTexts] = useState([]);
+  const [texts, setTexts] = useState([])
 
   useEffect(() => {
-    setTexts(getDayInfo(date));
-  }, [date, nakshatra]);
+    setTexts(getDayInfo(date))
+  }, [date, nakshatra])
 
   function getDayInfo(time_ms) {
-    const chosenDate = new Date(time_ms);
-    console.log(typeof time_ms, time_ms, chosenDate.toTimeString());
-    let panchang = mhah.calculate(chosenDate);
-    let Tithi = panchang.Tithi;
-    let Nakshatra = panchang.Nakshatra;
+    const chosenDate = new Date(time_ms)
+    console.log(typeof time_ms, time_ms, chosenDate.toTimeString())
+    let panchang = mhah.calculate(chosenDate)
+    let Tithi = panchang.Tithi
+    let Nakshatra = panchang.Nakshatra
     // console.log("panchang: ", panchang);
 
     // const storedNakshatra = localStorage.getItem("nakshatra");
-    const storedNakshatra = nakshatra;
-    const taraBala = getTaraBala(Nakshatra.ino + 1, storedNakshatra);
-    const todayNakshatra = nakshatras[Nakshatra.ino];
-    const tithi = tithis[Tithi.ino];
-    console.log("panchang: ", panchang);
+    const storedNakshatra = nakshatra
+    const taraBala = getTaraBala(Nakshatra.ino + 1, storedNakshatra)
+    const todayNakshatra = nakshatras[Nakshatra.ino]
+    const tithi = tithis[Tithi.ino]
+    console.log('panchang: ', panchang)
 
     return [
       {
-        class: "tithi",
-        category: "Титхи",
+        class: 'tithi',
+        category: 'Титхи',
         categoryDescription: `
         <p>Титхи — это лунный день. Титхи отсчитываются от новолуния и пронумерованы от 1↑ до 15↑ до полнолуния (растущая Луна) и от 1↓ до 15↓ после полнолуния (убывающая Луна).</p>
         <h4>Тип титхи</h4>
@@ -52,11 +52,11 @@ export default function Info() {
         title: tithi.name,
         titleExtra: tithi.number,
         description: `${tithi.type_description}. ${tithi.curator_description} `,
-        subTitle: `${tithi.type} / ${formatDate(Tithi.end)}`,
+        subTitle: `${tithi.type} / ${formatDate(Tithi.end)}`
       },
       {
-        class: "module__wide_ nakshatra",
-        category: "Накшатра",
+        class: 'module__wide_ nakshatra',
+        category: 'Накшатра',
         categoryDescription: `
         <p>Накшатры — это язык звезд, через который древние мудрецы пытались расшифровать смысл жизни. Возможно, получится и у вас.</p>
         <p>Всего накшатр 27. Рядом с названием накшатры указан её управитель, который дает понимание того, как и зачем накшатра действует, распаковывая самскары (отпечатки прошлого) в нашем сознании.</p>
@@ -68,22 +68,22 @@ export default function Info() {
         title: todayNakshatra.name,
         titleExtra: todayNakshatra.ruler,
         description: todayNakshatra.shakti,
-        subTitle: formatDate(Nakshatra.end),
+        subTitle: formatDate(Nakshatra.end)
       },
       {
-        class: "tarabala module__wide",
-        category: "Тара Бала",
+        class: 'tarabala module__wide',
+        category: 'Тара Бала',
         categoryDescription:
-          "Тара бала — это индивидуальные рекомендации на каждый день, рассчитываемые исходя из взаимоотношения накшатры дня и накшатры Луны вашего рождения.",
+          'Тара бала — это индивидуальные рекомендации на каждый день, рассчитываемые исходя из взаимоотношения накшатры дня и накшатры Луны вашего рождения.',
         title: taraBala.name,
-        titleExtra: "",
-        description: taraBala.description,
-      },
-    ];
+        titleExtra: '',
+        description: taraBala.description
+      }
+    ]
   }
 
   function getTaraBala(todayNakshatra, userNakshatra) {
-    let result;
+    let result
     // const tb = [
     //   { name: "Джанма", description: "Опасность для тела" },
     //   { name: "Сампат", description: "Богатство и процветание. Благоприятно" },
@@ -97,77 +97,77 @@ export default function Info() {
     // ];
     const tb = [
       {
-        name: "Джанма",
+        name: 'Джанма',
         description:
-          "Как насчет того, чтобы сегодня не рисковать и насладиться рутиной?",
+          'Как насчет того, чтобы сегодня не рисковать и насладиться рутиной?'
       },
       {
-        name: "Сампат",
+        name: 'Сампат',
         description:
-          "Как насчет того, чтобы сегодня сделать что-то, что приведет к увеличению благосостояния?",
+          'Как насчет того, чтобы сегодня сделать что-то, что приведет к увеличению благосостояния?'
       },
       {
-        name: "Випат",
+        name: 'Випат',
         description:
-          "Как насчет того, чтобы отложить сегодня важные дела и посвятить время себе?",
+          'Как насчет того, чтобы отложить сегодня важные дела и посвятить время себе?'
       },
       {
-        name: "Кшема",
+        name: 'Кшема',
         description:
-          "Как насчет того, чтобы сегодня действовать по плану во имя исполнения своих желаний и светлого будущего?",
+          'Как насчет того, чтобы сегодня действовать по плану во имя исполнения своих желаний и светлого будущего?'
       },
       {
-        name: "Пратйак",
+        name: 'Пратйак',
         description:
-          "Как насчет того, чтобы отложить сегодня важные дела и посвятить время себе?",
+          'Как насчет того, чтобы отложить сегодня важные дела и посвятить время себе?'
       },
       {
-        name: "Садхана",
+        name: 'Садхана',
         description:
-          "Как насчет того, чтобы сделать именно сегодня что-то важное во имя исполнения своих желаний?",
+          'Как насчет того, чтобы сделать именно сегодня что-то важное во имя исполнения своих желаний?'
       },
       {
-        name: "Наидхана",
+        name: 'Наидхана',
         description:
-          "Как насчет того, чтобы сегодня заняться рутинными делами и насладиться процессом, не ожидая немедленного результата?",
+          'Как насчет того, чтобы сегодня заняться рутинными делами и насладиться процессом, не ожидая немедленного результата?'
       },
       {
-        name: "Митра",
+        name: 'Митра',
         description:
-          "Как насчет того, чтобы привнести в сегодняшние дела хорошее настроение и благость?",
+          'Как насчет того, чтобы привнести в сегодняшние дела хорошее настроение и благость?'
       },
       {
-        name: "Парама митра",
+        name: 'Парама митра',
         description:
-          "Как насчет того, чтобы сделать сегодня что-то важное для реализации желаемой цели?",
-      },
-    ];
+          'Как насчет того, чтобы сделать сегодня что-то важное для реализации желаемой цели?'
+      }
+    ]
     // console.log("userNakshatra", userNakshatra);
     if (isNaN(userNakshatra) || userNakshatra == null) {
       result = {
-        name: "…",
-        description: "Укажите свою накшатру Луны в настройках",
-      };
+        name: '…',
+        description: 'Укажите свою накшатру Луны в настройках'
+      }
     } else {
-      result = tb[(27 - userNakshatra + todayNakshatra) % 9];
+      result = tb[(27 - userNakshatra + todayNakshatra) % 9]
     }
-    return result;
+    return result
   }
 
   function formatDate(time) {
-    let date = new Date(time);
+    let date = new Date(time)
     return (
-      "до " +
-      date.toLocaleString("en-gb", {
-        hour: "numeric",
-        minute: "numeric",
-        day: "numeric",
-        month: "numeric",
+      'до ' +
+      date.toLocaleString('en-gb', {
+        hour: 'numeric',
+        minute: 'numeric',
+        day: 'numeric',
+        month: 'numeric'
       })
-    );
+    )
   }
 
   return texts.map((item) => {
-    return <InfoModule key={item.class} text={item} />;
-  });
+    return <InfoModule key={item.class} text={item} />
+  })
 }
