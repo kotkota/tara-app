@@ -243,7 +243,7 @@ export const tithis = [
   },
   {
     number: "15↓",
-    name: "Амавасьа",
+    name: "Амавасья",
     type: "Пурна",
     type_description: "Полнота, завершение цикла, сбор урожая",
     curator: "Юпитер",
