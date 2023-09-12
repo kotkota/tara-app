@@ -1,12 +1,12 @@
-import './assets/styles.css'
-import React, { lazy, Suspense } from 'react'
+import "./assets/styles.css";
+import React, { lazy, Suspense } from "react";
 // import TaraCalendar from "./components/TaraCalendar";
-import SettingsPanel from './components/Settings'
 // import Info from "./components/Info";
-import { AppContextProvider } from './components/AppContext'
+import SettingsPanel from "./components/Settings";
+import { AppContextProvider } from "./components/AppContext";
 
-const TaraCalendar = lazy(() => import('./components/TaraCalendar'))
-const Info = lazy(() => import('./components/Info'))
+const TaraCalendar = lazy(() => import("./components/TaraCalendar"));
+const Info = lazy(() => import("./components/Info"));
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
         <Info />
       </Suspense>
     </AppContextProvider>
-  )
+  );
 }
 
-export default App
+export default App;

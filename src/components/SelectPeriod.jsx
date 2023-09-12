@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Box, Select, Option } from "@mui/joy";
+import { Box, Option, Select, Typography } from "@mui/joy";
 import { AppContext } from "./AppContext";
 
 export default function SelectPeriod() {
@@ -27,47 +27,58 @@ export default function SelectPeriod() {
   }
 
   return (
-    <Box sx={{ display: "flex", gap: 1.5 }}>
-      <Select
-        size="xs"
-        variant="soft"
-        placeholder="…"
-        value={period.cycle}
-        onChange={(e, newValue) => handleCycleSelect(newValue)}
-        sx={{ pl: 1, py: 0.5 }}
-      >
-        {cycleDuration.map((item, index) => (
-          <Option
-            key={"c_" + index.toString()}
-            variant="soft"
-            color="neutral"
-            value={item}
-            sx={{ px: 1, py: 0.5 }}
-          >
-            {item}
-          </Option>
-        ))}
-      </Select>
-      <Select
-        size="xs"
-        variant="soft"
-        placeholder="…"
-        value={period.duration}
-        onChange={(e, newValue) => handleDurationSelect(newValue)}
-        sx={{ pl: 1, py: 0.5 }}
-      >
-        {menstruationDuration.map((item, index) => (
-          <Option
-            key={"d_" + index.toString()}
-            variant="soft"
-            color="neutral"
-            value={item}
-            sx={{ px: 1, py: 0.5 }}
-          >
-            {item}
-          </Option>
-        ))}
-      </Select>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <Typography level="label" fontWeight="md" fontSize="md">
+        Продолжительность цикла
+      </Typography>
+      <Box sx={{ display: "flex", gap: 1.5 }}>
+        <Select
+          size="xs"
+          variant="soft"
+          placeholder="…"
+          value={period.cycle}
+          onChange={(e, newValue) => handleCycleSelect(newValue)}
+          sx={{ pl: 1, py: 0.5 }}
+        >
+          {cycleDuration.map((item, index) => (
+            <Option
+              key={"c_" + index.toString()}
+              variant="soft"
+              color="neutral"
+              value={item}
+              sx={{ px: 1, py: 0.5 }}
+            >
+              {item}
+            </Option>
+          ))}
+        </Select>
+        <Select
+          size="xs"
+          variant="soft"
+          placeholder="…"
+          value={period.duration}
+          onChange={(e, newValue) => handleDurationSelect(newValue)}
+          sx={{ pl: 1, py: 0.5 }}
+        >
+          {menstruationDuration.map((item, index) => (
+            <Option
+              key={"d_" + index.toString()}
+              variant="soft"
+              color="neutral"
+              value={item}
+              sx={{ px: 1, py: 0.5 }}
+            >
+              {item}
+            </Option>
+          ))}
+        </Select>
+      </Box>
     </Box>
   );
 }
