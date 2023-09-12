@@ -79,9 +79,10 @@ export default function SettingsPanel() {
               Настройки
             </Typography>
             <Divider inset="none" color="primary" />
-            {/* <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <SelectNakshatra />
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography level="label" fontWeight="md" fontSize="md">
-                Tara Pro
+                Режим для девочек
               </Typography>
               <Switch
                 checked={true}
@@ -90,31 +91,8 @@ export default function SettingsPanel() {
                 size="sm"
                 variant="soft"
               />
-            </Box> */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Typography level="label" fontWeight="md" fontSize="md">
-                Накшатра Луны
-              </Typography>
-              <SelectNakshatra />
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Typography level="label" fontWeight="md" fontSize="md">
-                Продолжительность цикла
-              </Typography>
-              <SelectPeriod />
-            </Box>
+            <SelectPeriod />
           </Sheet>
         </ModalDialog>
       </Modal>
