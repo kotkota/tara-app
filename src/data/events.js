@@ -167,7 +167,7 @@ export const events = [
     title: "Равноденствие",
     description:
       "The Sun will beam down directly on the equator giving us just about equal amounts of day and night in most parts of the world. North of the equator, this is your Autumnal Equinox. If you live south of the equator, this is your Spring Equinox.\n\nAlso, try balancing an egg on its end! Whether or not you succeed has nothing to do with the Equinox, but it's still a fun game to try on any day of the year. :)",
-    start: "2023-09-24T00:50:00-06:00",
+    start: "2023-09-23T09:50:00+03:00",
     classNames: "equinox",
   },
   {
