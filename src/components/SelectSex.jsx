@@ -19,7 +19,7 @@ export default function SelectSex() {
           Пол
         </Typography>
         <Switch
-          checked={isFemale}
+          checked={Boolean(isFemale)}
           onChange={(e) => handleSelect(e.target.checked)}
           size="md"
           variant="soft"
