@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SelectNakshatra from "./SelectNakshatra";
 import SelectPeriod from "./SelectPeriod";
+import SelectSex from "./SelectSex";
 import { AppContext } from "./AppContext";
 
 import { ReactComponent as SettingsIcon } from "../assets/icons/settings.svg";
@@ -13,7 +14,6 @@ import {
   ModalClose,
   ModalDialog,
   Sheet,
-  Switch,
   Typography,
 } from "@mui/joy";
 
@@ -80,18 +80,7 @@ export default function SettingsPanel() {
             </Typography>
             <Divider inset="none" color="primary" />
             <SelectNakshatra />
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography level="label" fontWeight="md" fontSize="md">
-                Режим для девочек
-              </Typography>
-              <Switch
-                checked={true}
-                color="neutral"
-                disabled={true}
-                size="sm"
-                variant="soft"
-              />
-            </Box>
+            <SelectSex />
             <SelectPeriod />
           </Sheet>
         </ModalDialog>

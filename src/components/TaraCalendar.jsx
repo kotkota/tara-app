@@ -1,92 +1,97 @@
-import React, { useContext, useRef } from 'react'
-import FullCalendar from '@fullcalendar/react'
-import multiMonthPlugin from '@fullcalendar/multimonth'
-import interactionPlugin from '@fullcalendar/interaction'
-import rrulePlugin from '@fullcalendar/rrule'
-import { addDays } from './utils'
-import InfoTheDay from './InfoTheDay'
-import { AppContext } from './AppContext'
+import React, { useContext, useRef } from "react";
+import FullCalendar from "@fullcalendar/react";
+import multiMonthPlugin from "@fullcalendar/multimonth";
+import interactionPlugin from "@fullcalendar/interaction";
+import rrulePlugin from "@fullcalendar/rrule";
+import { addDays } from "./utils";
+import InfoTheDay from "./InfoTheDay";
+import { AppContext } from "./AppContext";
 
-import { events } from '../data/events'
+import { events } from "../data/events";
 
 // const FullCalendar = lazy(() => import("@fullcalendar/react"));
 
 export default function TaraCalendar() {
-  const calendarRef = useRef()
+  const calendarRef = useRef();
 
-  const { periodStartDate, period, setDate } = useContext(AppContext)
+  const { periodStartDate, isFemale, period, setDate } = useContext(AppContext);
 
-  const options = {
-    plugins: [multiMonthPlugin, rrulePlugin, interactionPlugin],
-    initialView: 'multiMonthYear',
-    multiMonthMaxColumns: 1,
-    // initialEvents: { events },
-    events: [
+  let eventsToShow = events;
+
+  if (isFemale)
+    eventsToShow = [
       ...events,
       {
-        title: 'Period',
+        title: "Period",
         rrule: {
           // dtstart: "2023-03-30",
           dtstart: periodStartDate,
-          until: '2024-01-01',
-          freq: 'daily',
-          interval: period.cycle
+          until: "2024-01-01",
+          freq: "daily",
+          interval: period.cycle,
         },
-        duration: period.duration * 24 + ':00:00',
-        display: 'background',
+        duration: period.duration * 24 + ":00:00",
+        display: "background",
         allDay: true,
-        backgroundColor: '#ff7070',
-        classNames: 'period'
+        backgroundColor: "#ff7070",
+        classNames: "period",
       },
       {
-        title: 'Ovulation',
+        title: "Ovulation",
         rrule: {
           // dtstart: "2023-03-30",
           dtstart: addDays(
             periodStartDate,
-            period.duration - 1 + (period.cycle - period.duration) / 2
+            period.duration - 1 + (period.cycle - period.duration) / 2,
           ),
-          until: '2024-01-01',
-          freq: 'daily',
-          interval: period.cycle
+          until: "2024-01-01",
+          freq: "daily",
+          interval: period.cycle,
         },
-        duration: 3 * 24 + ':00:00',
-        display: 'background',
+        duration: 3 * 24 + ":00:00",
+        display: "background",
         allDay: true,
-        backgroundColor: '#bcfca2',
-        classNames: 'ovulation'
-      }
-    ],
+        backgroundColor: "#bcfca2",
+        classNames: "ovulation",
+      },
+    ];
+
+  const options = {
+    plugins: [multiMonthPlugin, rrulePlugin, interactionPlugin],
+    initialView: "multiMonthYear",
+    multiMonthMaxColumns: 1,
+    // initialEvents: { events },
+    events: eventsToShow,
     selectable: true,
-    locale: 'ru',
+    locale: "ru",
     firstDay: 1,
-    nextDayThreshold: '09:00:00',
-    eventColor: 'firebrick',
+    nextDayThreshold: "09:00:00",
+    eventColor: "firebrick",
     headerToolbar: {
-      left: '',
-      center: '',
-      right: ''
+      left: "",
+      center: "",
+      right: "",
     },
     // eventClick: (eventInfo) => {
     //   setDate(eventInfo.event.startStr);
     // },
     viewDidMount: (view) => {},
     dateClick: (info) => {
-      console.log(info.dateStr, new Date(info.dateStr).setHours(12))
-      setDate(new Date(info.dateStr).setHours(12))
-      handleTap(info.dateStr)
-    }
-  }
+      console.log(info.dateStr, new Date(info.dateStr).setHours(12));
+      setDate(new Date(info.dateStr).setHours(12));
+      handleTap(info.dateStr);
+    },
+  };
 
   const handleTap = (date) => {
-    let calendarApi = calendarRef.current.getApi()
-    calendarApi.select(date)
-  }
+    let calendarApi = calendarRef.current.getApi();
+    calendarApi.select(date);
+  };
 
   return (
     <div className="tara-calendar module__wide">
       <FullCalendar ref={calendarRef} {...options} />
       <InfoTheDay />
     </div>
-  )
+  );
 }
