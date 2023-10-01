@@ -19,8 +19,6 @@ export default function SelectSex() {
       <Switch
         checked={isFemale}
         onChange={(e) => handleSelect(e.target.checked)}
-        color="neutral"
-        // disabled={true}
         size="md"
         variant="soft"
       />
