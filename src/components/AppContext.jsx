@@ -7,6 +7,10 @@ export function AppContextProvider({ children }) {
   const [nakshatra, setNakshatra] = useState(
     localStorage.getItem("nakshatra") || null,
   );
+  const [isFemale, setIsFemale] = useState(
+    localStorage.getItem("isFemale") || true,
+  );
+
   const [date, setDate] = useState(() => Date.now());
   const [period, setPeriod] = useState(
     JSON.parse(localStorage.getItem("period")) || { cycle: 29, duration: 5 },
@@ -19,6 +23,8 @@ export function AppContextProvider({ children }) {
       value={{
         nakshatra,
         setNakshatra,
+        isFemale,
+        setIsFemale,
         periodStartDate,
         setPeriodStartDate,
         period,
