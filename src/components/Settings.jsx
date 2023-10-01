@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SelectNakshatra from "./SelectNakshatra";
-import SelectPeriod from "./SelectPeriod";
 import SelectSex from "./SelectSex";
 import { AppContext } from "./AppContext";
 
@@ -81,7 +80,6 @@ export default function SettingsPanel() {
             <Divider inset="none" color="primary" />
             <SelectNakshatra />
             <SelectSex />
-            <SelectPeriod />
           </Sheet>
         </ModalDialog>
       </Modal>
