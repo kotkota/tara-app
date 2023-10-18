@@ -247,7 +247,9 @@ body {
 .fc .fc-daygrid-day-frame {
   padding-top: 4px;
 }
-
+.fc .fc-popover {
+  z-index: 1000;
+}
 .fc-popover .fc-event-time,
 .fc-popover .fc-event-title {
   display: initial;
@@ -309,7 +311,9 @@ body {
 }
 
 .eclipse .fc-daygrid-event-dot {
-  box-shadow: 0 0 0 0.75px white, 0 0 6px 2px orange;
+  box-shadow:
+    0 0 0 0.75px white,
+    0 0 6px 2px orange;
 }
 
 @media (min-width: 680px) {
@@ -388,4 +392,5 @@ h5 {
   --joy-palette-background-backdrop: rgb(47 79 79 / 50%);
   --IconButton-size: 20px;
   --joy-radius-sm: 6px;
+  --joy-zIndex-modal: 1000;
 }

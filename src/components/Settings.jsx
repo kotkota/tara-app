@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SelectNakshatra from "./SelectNakshatra";
 import SelectSex from "./SelectSex";
+import SetBirthTime from "./SetBirthTime";
 import { AppContext } from "./AppContext";
 
 import { ReactComponent as SettingsIcon } from "../assets/icons/settings.svg";
@@ -30,7 +31,7 @@ export default function SettingsPanel() {
           px: 1,
         }}
       >
-        <Logo fill="darkseagreen" width="120" style={{ marginLeft: "-8px" }} />
+        <Logo fill="darkseagreen" width="230" style={{ marginLeft: "-8px" }} />
         <IconButton
           aria-label="Открыть настройки"
           variant="plain"
@@ -80,6 +81,7 @@ export default function SettingsPanel() {
             <Divider inset="none" color="primary" />
             <SelectNakshatra />
             <SelectSex />
+            <SetBirthTime />
           </Sheet>
         </ModalDialog>
       </Modal>
