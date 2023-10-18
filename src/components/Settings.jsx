@@ -81,7 +81,7 @@ export default function SettingsPanel() {
             <Divider inset="none" color="primary" />
             <SelectNakshatra />
             <SelectSex />
-            <SetBirthTime />
+            {/* <SetBirthTime /> */}
           </Sheet>
         </ModalDialog>
       </Modal>
