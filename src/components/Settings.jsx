@@ -31,7 +31,7 @@ export default function SettingsPanel() {
           px: 1,
         }}
       >
-        <Logo fill="darkseagreen" width="230" style={{ marginLeft: "-8px" }} />
+        <Logo fill="darkseagreen" width="180" style={{ marginLeft: "-8px" }} />
         <IconButton
           aria-label="Открыть настройки"
           variant="plain"
