@@ -270,7 +270,7 @@ body {
 .fc .fc-multimonth {
   border: none;
   border-radius: 6px;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 .fc .fc-multimonth-title {
   text-align: left;
