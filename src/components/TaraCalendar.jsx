@@ -136,7 +136,7 @@ export default function TaraCalendar() {
     setTimeout(() => {
       document.querySelector(".fc .fc-multimonth").scrollTo(0, 0);
       document.getElementById(monthID).scrollIntoView({ block: "start" });
-    }, 150);
+    }, 100);
     calendarApi.select(date.dateStr);
   };
 
