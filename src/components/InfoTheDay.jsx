@@ -9,7 +9,7 @@ import {
   ModalDialog,
   Typography,
 } from "@mui/joy";
-import { formatDate } from "./utils";
+import { formatDate, formatMonth } from "./utils";
 import { events } from "../data/events";
 import { events2024 } from "../data/events2024";
 import { AppContext } from "./AppContext";
@@ -61,7 +61,10 @@ export default function InfoTheDay() {
               size="sm"
               onClick={() => {
                 setDate(Date.now());
-                calendarApi.today();
+                const currentMonth = formatMonth(Date.now());
+                document
+                  .querySelector(`[data-date="${currentMonth}"]`)
+                  .scrollIntoView();
               }}
               sx={{ mr: 1.5 }}
             >

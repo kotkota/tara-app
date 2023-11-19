@@ -3,7 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import interactionPlugin from "@fullcalendar/interaction";
 import rrulePlugin from "@fullcalendar/rrule";
-import { addDays } from "./utils";
+import { addDays, formatMonth } from "./utils";
 import InfoTheDay from "./InfoTheDay";
 import { AppContext } from "./AppContext";
 
@@ -119,17 +119,11 @@ export default function TaraCalendar() {
       calendarApi = calendarRef.current.getApi();
       // console.log (calendarApi);
       // calendarApi.today();
-      const currentMonth = formatDate(date);
+      const currentMonth = formatMonth(date);
       document.querySelector(`[data-date="${currentMonth}"]`).scrollIntoView();
     }, 10);
   };
 
-  function formatDate(time) {
-    const date = new Date(time);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    return `${year}-${month}`;
-  }
   const handleTap = (date) => {
     calendarApi = calendarRef.current.getApi();
     calendarApi.select(date.dateStr);
