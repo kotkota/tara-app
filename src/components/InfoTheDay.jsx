@@ -13,6 +13,7 @@ import { formatDate } from "./utils";
 import { events } from "../data/events";
 import { events2024 } from "../data/events2024";
 import { AppContext } from "./AppContext";
+import { calendarApi } from "./TaraCalendar";
 
 export default function InfoTheDay() {
   const { date, setDate, periodStartDate, setPeriodStartDate } =
@@ -58,7 +59,10 @@ export default function InfoTheDay() {
               variant="plain"
               color="transparent"
               size="sm"
-              onClick={() => setDate(Date.now())}
+              onClick={() => {
+                setDate(Date.now());
+                calendarApi.today();
+              }}
               sx={{ mr: 1.5 }}
             >
               <ResetIcon fill="darkseagreen" />

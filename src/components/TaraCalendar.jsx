@@ -11,10 +11,10 @@ import { events } from "../data/events";
 import { events2024 } from "../data/events2024";
 
 // const FullCalendar = lazy(() => import("@fullcalendar/react"));
+export let calendarApi;
 
 export default function TaraCalendar() {
   const calendarRef = useRef();
-
   const { periodStartDate, isFemale, period, date, setDate } =
     useContext(AppContext);
 
@@ -66,10 +66,10 @@ export default function TaraCalendar() {
     multiMonthMaxColumns: 1,
     // initialEvents: { events },
     events: eventsToShow,
-    // visibleRange: {
-    // start: "2023-01-01",
-    //   end: "2024-12-31",
-    // },
+    visibleRange: {
+      start: "2023-01-01",
+      end: "2024-12-31",
+    },
     // visibleRange: function () {
     //   // Generate a new date for manipulating in the next step
     //   const startDate = new Date(date);
@@ -85,7 +85,7 @@ export default function TaraCalendar() {
 
     //   return { start: startDate, end: endDate };
     // },
-    duration: { months: 24 },
+    // duration: { months: 24 },
 
     selectable: true,
     locale: "ru",
@@ -116,17 +116,17 @@ export default function TaraCalendar() {
 
   const goToday = () => {
     setTimeout(() => {
-      const calendarApi = calendarRef.current.getApi();
-      // console.log(calendarRef);
+      calendarApi = calendarRef.current.getApi();
+      console.log(calendarApi);
       calendarApi.today();
       // calendarApi.gotoDate(date);
-    }, 10);
+    }, 100);
   };
 
   const handleTap = (date) => {
-    const calendarApi = calendarRef.current.getApi();
-    // calendarApi.gotoDate(date);
+    calendarApi = calendarRef.current.getApi();
     // console.log(calendarRef);
+    calendarApi.gotoDate(date);
     calendarApi.select(date);
   };
 
