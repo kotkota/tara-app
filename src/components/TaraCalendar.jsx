@@ -109,7 +109,6 @@ export default function TaraCalendar() {
       // console.log(info.dateStr, new Date(info.dateStr).setHours(12));
       // setDate(new Date(info.dateStr).setHours(12));
       setDate(info.date.setHours(12));
-      // console.log(info);
       // console.log(info.dateStr, new Date(info.dateStr).setHours(12));
       handleTap(info);
     },
@@ -129,14 +128,13 @@ export default function TaraCalendar() {
     // console.log(calendarRef);
     // calendarApi.gotoDate(date);
     const dayID = date.dayEl.attributes["aria-labelledby"].value;
-    const monthID = document
-      .getElementById(dayID)
-      .closest(".fc-multimonth-month").attributes["aria-labelledby"].value;
-    console.log(monthID, dayID);
+    // console.log(dayID);
     setTimeout(() => {
-      document.querySelector(".fc .fc-multimonth").scrollTo(0, 0);
-      document.getElementById(monthID).scrollIntoView({ block: "start" });
-    }, 100);
+      document
+        .getElementById(dayID)
+        .closest(".fc-multimonth-month")
+        .scrollIntoView();
+    }, 50);
     calendarApi.select(date.dateStr);
   };
 
