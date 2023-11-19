@@ -15,17 +15,16 @@ function App() {
       <Suspense
         fallback={
           <>
-            <div className="fc">
-              <div className="fc-multimonth-title">...</div>
+            <div class="tara-calendar module__wide">
+              <div class="fc"></div>
+              <div class="module today" style={{ height: 44 }}></div>
             </div>
-            <div className="module tithi">
-              <div className="MuiBox-root">
-                <span className="module_category">…</span>
-              </div>
-              <h3 className="module_title">
-                <span>…</span>
-              </h3>
-            </div>
+            <div className="module tithi" style={{ height: 100 }}></div>
+            <div className="module nakshatra" style={{ height: 100 }}></div>
+            <div
+              className="module tarabala module__wide"
+              style={{ height: 100 }}
+            ></div>
           </>
         }
       >

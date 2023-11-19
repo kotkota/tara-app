@@ -11,18 +11,20 @@ import {
 } from "@mui/joy";
 import { formatDate } from "./utils";
 import { events } from "../data/events";
+import { events2024 } from "../data/events2024";
 import { AppContext } from "./AppContext";
 
 export default function InfoTheDay() {
   const { date, setDate, periodStartDate, setPeriodStartDate } =
     useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
+  const mergedEvents = [...events, ...events2024];
 
   function updateTitles(date = Date.now()) {
     // console.log("boop", typeof date, date, formatDate(Date.now()));
     return {
       dateStr: new Date(date).toLocaleString("ru", { dateStyle: "long" }),
-      dateTitles: getStoredEventsByDate(date, events),
+      dateTitles: getStoredEventsByDate(date, mergedEvents),
     };
   }
 
