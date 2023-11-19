@@ -66,10 +66,10 @@ export default function TaraCalendar() {
     multiMonthMaxColumns: 1,
     // initialEvents: { events },
     events: eventsToShow,
-    visibleRange: {
-      start: "2023-01-01",
-      end: "2024-12-31",
-    },
+    // visibleRange: {
+    //   start: "2023-01-01",
+    //   end: "2024-12-31",
+    // },
     // visibleRange: function () {
     //   // Generate a new date for manipulating in the next step
     //   const startDate = new Date(date);
@@ -85,7 +85,7 @@ export default function TaraCalendar() {
 
     //   return { start: startDate, end: endDate };
     // },
-    // duration: { months: 24 },
+    duration: { months: 24 },
 
     selectable: true,
     locale: "ru",
@@ -117,25 +117,26 @@ export default function TaraCalendar() {
   const goToday = () => {
     setTimeout(() => {
       calendarApi = calendarRef.current.getApi();
-      console.log(calendarApi);
-      calendarApi.today();
-      // calendarApi.gotoDate(date);
+      // console.log (calendarApi);
+      // calendarApi.today();
+      const currentMonth = formatDate(date);
+      document.querySelector(`[data-date="${currentMonth}"]`).scrollIntoView();
     }, 10);
   };
 
+  function formatDate(time) {
+    const date = new Date(time);
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    return `${year}-${month}`;
+  }
   const handleTap = (date) => {
     calendarApi = calendarRef.current.getApi();
+    calendarApi.select(date.dateStr);
     // console.log(calendarRef);
     // calendarApi.gotoDate(date);
-    const dayID = date.dayEl.attributes["aria-labelledby"].value;
+    // const dayID = date.dayEl.attributes["aria-labelledby"].value;
     // console.log(dayID);
-    setTimeout(() => {
-      document
-        .getElementById(dayID)
-        .closest(".fc-multimonth-month")
-        .scrollIntoView();
-    }, 50);
-    calendarApi.select(date.dateStr);
   };
 
   return (
