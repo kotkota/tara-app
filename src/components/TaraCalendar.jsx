@@ -109,7 +109,6 @@ export default function TaraCalendar() {
       // console.log(info.dateStr, new Date(info.dateStr).setHours(12));
       // setDate(new Date(info.dateStr).setHours(12));
       setDate(info.date.setHours(12));
-      // console.log(info);
       // console.log(info.dateStr, new Date(info.dateStr).setHours(12));
       handleTap(info);
     },
