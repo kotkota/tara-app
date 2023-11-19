@@ -121,7 +121,7 @@ export default function TaraCalendar() {
       console.log(calendarApi);
       calendarApi.today();
       // calendarApi.gotoDate(date);
-    }, 100);
+    }, 10);
   };
 
   const handleTap = (date) => {
@@ -136,7 +136,7 @@ export default function TaraCalendar() {
     setTimeout(() => {
       document.querySelector(".fc .fc-multimonth").scrollTo(0, 0);
       document.getElementById(monthID).scrollIntoView({ block: "start" });
-    }, 5);
+    }, 150);
     calendarApi.select(date.dateStr);
   };
 
