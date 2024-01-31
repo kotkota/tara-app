@@ -150,4 +150,64 @@ export const events2024 = [
     classNames: "newmoon eclipse",
     color: "#2d4464",
   },
+  {
+    title: "Переход Солнца в знак Козерог",
+    start: "2024-01-14T21:13:33.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Водолей",
+    start: "2024-02-13T10:13:41.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Рыбы",
+    start: "2024-03-14T07:06:07.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Овен",
+    start: "2024-04-13T15:34:12.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Телец",
+    start: "2024-05-14T12:23:31.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Близнецы",
+    start: "2024-06-14T18:57:09.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Рак",
+    start: "2024-07-16T05:48:47.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Лев",
+    start: "2024-08-16T14:14:11.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Дева",
+    start: "2024-09-16T14:12:45.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Весы",
+    start: "2024-10-17T02:12:25.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Скорпион",
+    start: "2024-11-16T02:01:49.000Z",
+    classNames: "suryasankranti",
+  },
+  {
+    title: "Переход Солнца в знак Стрелец",
+    start: "2024-12-15T16:40:59.000Z",
+    classNames: "suryasankranti",
+  },
 ];
