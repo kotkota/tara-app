@@ -21,8 +21,10 @@ export default function InfoModule({ text }) {
             aria-label={`Что такое ${text.category}?`}
             variant="plain"
             color="transparent"
-            size="xs"
             onClick={() => setIsOpen(true)}
+            sx={{
+              "--IconButton-size": "16px",
+            }}
           >
             <InfoOutlined fill="darkseagreen" />
           </IconButton>
