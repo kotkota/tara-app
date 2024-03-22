@@ -16,7 +16,7 @@ import { AppContext } from "./AppContext";
 import { calendarApi } from "./TaraCalendar";
 
 export default function InfoTheDay() {
-  const { date, setDate, periodStartDate, setPeriodStartDate } =
+  const { date, setDate, periodStartDate, setPeriodStartDate, isFemale } =
     useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const mergedEvents = [...events, ...events2024];
@@ -51,7 +51,7 @@ export default function InfoTheDay() {
     <div className="module today">
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <h3 className="module_title">{titles.dateStr}</h3>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
           {new Date(date).toLocaleString() != new Date().toLocaleString() ? (
             /* если выбранная дата отличается от сегодня */
             <IconButton
@@ -66,20 +66,21 @@ export default function InfoTheDay() {
                   .querySelector(`[data-date="${currentMonth}"]`)
                   .scrollIntoView();
               }}
-              sx={{ mr: 1.5 }}
             >
               <ResetIcon fill="darkseagreen" />
             </IconButton>
           ) : null}
-          <IconButton
-            aria-label="Добавить начало периода"
-            variant="plain"
-            color="transparent"
-            size="sm"
-            onClick={() => setIsOpen(true)}
-          >
-            <AddIcon fill="darkseagreen" />
-          </IconButton>
+          {isFemale && (
+            <IconButton
+              aria-label="Добавить начало периода"
+              variant="plain"
+              color="transparent"
+              size="sm"
+              onClick={() => setIsOpen(true)}
+            >
+              <AddIcon fill="darkseagreen" />
+            </IconButton>
+          )}
         </Box>
       </Box>
       <p className="module_description">{titles.dateTitles}</p>
