@@ -22,6 +22,7 @@ export default function InfoModule({ text }) {
             variant="plain"
             color="transparent"
             size="xs"
+            sx={{ padding: 0 }}
             onClick={() => setIsOpen(true)}
           >
             <InfoOutlined fill="darkseagreen" />
