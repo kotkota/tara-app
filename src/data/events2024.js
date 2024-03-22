@@ -205,9 +205,25 @@ export const events2024 = [
     start: "2024-11-16T02:01:49.000Z",
     classNames: "suryasankranti",
   },
+
   {
-    title: "Переход Солнца в знак Стрелец",
-    start: "2024-12-15T16:40:59.000Z",
-    classNames: "suryasankranti",
+    title: "Равноденствие",
+    start: "2024-03-20T03:07:00.000Z",
+    classNames: "equinox",
+  },
+  {
+    title: "Солнцестояние",
+    start: "2024-06-20T21:51:19.000Z",
+    classNames: "solstice",
+  },
+  {
+    title: "Равноденствие",
+    start: "2024-09-22T12:44:00.000Z",
+    classNames: "equinox",
+  },
+  {
+    title: "Солнцестояние",
+    start: "2024-12-21T09:21:38.000Z",
+    classNames: "solstice",
   },
 ];
