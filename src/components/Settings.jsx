@@ -29,7 +29,7 @@ export default function SettingsPanel() {
           display: "flex",
           justifyContent: "space-between",
           width: 1,
-          px: 1,
+          pl: 1,
         }}
       >
         <Logo fill="darkseagreen" width="180" style={{ marginLeft: "-8px" }} />
@@ -54,6 +54,7 @@ export default function SettingsPanel() {
           size="md"
           sx={(theme) => ({
             py: 0,
+            px: 1.5,
             mx: "auto",
             // boxShadow: theme.shadow.xs,
             boxShadow: "none",
@@ -63,7 +64,7 @@ export default function SettingsPanel() {
         >
           <ModalClose
             size="lg"
-            sx={{ m: 0, top: -8, color: "darkseagreen", zIndex: 1 }}
+            sx={{ m: 0, top: -8, right: 5, color: "darkseagreen", zIndex: 1 }}
             color="transparent"
           />
           <Sheet
