@@ -86,8 +86,9 @@ export default function SettingsPanel() {
             {/* <SetBirthTime /> */}
             <Typography
               component="p"
+              level="body-sm"
               textColor="darkseagreen"
-              sx={{ mt: "auto", py: 1.5 }}
+              sx={{ mt: "auto", py: 2 }}
             >
               © 2023–2024 Надежда Афонькина. Разработка:{" "}
               <Link href="https://maxshu.ru" textColor="darkseagreen">
