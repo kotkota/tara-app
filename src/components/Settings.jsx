@@ -7,6 +7,7 @@ import { AppContext } from "./AppContext";
 import { ReactComponent as SettingsIcon } from "../assets/icons/settings.svg";
 import { ReactComponent as Logo } from "../assets/tara_logo.svg";
 import {
+  Link,
   Box,
   Divider,
   IconButton,
@@ -69,10 +70,11 @@ export default function SettingsPanel() {
             variant="solid"
             invertedColors
             sx={{
+              backgroundColor: "transparent",
+              height: "100%",
               display: "flex",
               flexDirection: "column",
               gap: 2,
-              backgroundColor: "transparent",
             }}
           >
             <Typography component="h3" textColor="darkseagreen">
@@ -82,6 +84,16 @@ export default function SettingsPanel() {
             <SelectNakshatra />
             <SelectSex />
             {/* <SetBirthTime /> */}
+            <Typography
+              component="p"
+              textColor="darkseagreen"
+              sx={{ mt: "auto", py: 1.5 }}
+            >
+              © 2023–2024 Надежда Афонькина. Разработка:{" "}
+              <Link href="https://maxshu.ru" textColor="darkseagreen">
+                maxshu
+              </Link>
+            </Typography>
           </Sheet>
         </ModalDialog>
       </Modal>
