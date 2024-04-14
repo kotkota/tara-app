@@ -89,9 +89,10 @@ export default function SettingsPanel() {
               component="p"
               level="body-sm"
               textColor="darkseagreen"
-              sx={{ mt: "auto", py: 2 }}
+              textAlign="center"
+              sx={{ mt: "auto", py: 3, mx: "auto" }}
             >
-              © 2023–2024 Надежда Афонькина. Разработка:{" "}
+              © 2023–2024 Надежда Афонькина. Разработка:{" "}
               <Link href="https://maxshu.ru" textColor="darkseagreen">
                 maxshu
               </Link>
