@@ -8,7 +8,9 @@ import InfoTheDay from "./InfoTheDay";
 import { AppContext } from "./AppContext";
 
 import { events } from "../data/events";
+import { sankranti } from "../data/sankranti";
 import { events2024 } from "../data/events2024";
+import { events2025 } from "../data/events2025";
 
 // const FullCalendar = lazy(() => import("@fullcalendar/react"));
 export let calendarApi;
