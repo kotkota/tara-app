@@ -146,22 +146,22 @@ export const events2025 = [
 
   {
     title: "Равноденствие",
-    start: "2025-03-19T23:06:00.000Z",
+    start: "2025-03-20T10:01:00.000Z",
     classNames: "equinox",
   },
   {
     title: "Солнцестояние",
-    start: "2025-06-20T16:50:20.000Z",
+    start: "2025-06-21T03:42:00.000Z",
     classNames: "solstice",
   },
   {
     title: "Равноденствие",
-    start: "2025-09-22T08:43:00.000Z",
+    start: "2025-09-22T19:19:00.000Z",
     classNames: "equinox",
   },
   {
     title: "Солнцестояние",
-    start: "2025-12-21T05:20:30.000Z",
+    start: "2025-12-21T16:03:00.000Z",
     classNames: "solstice",
   },
 ];
