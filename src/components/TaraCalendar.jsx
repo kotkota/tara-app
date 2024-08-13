@@ -20,12 +20,11 @@ export default function TaraCalendar() {
   const { periodStartDate, isFemale, period, date, setDate } =
     useContext(AppContext);
 
-  let eventsToShow = [...events, ...events2024];
+  let eventsToShow = [...sankranti, ...events2024, ...events2025];
 
   if (isFemale)
     eventsToShow = [
-      ...events,
-      ...events2024,
+      ...eventsToShow,
       {
         title: "Period",
         rrule: {
@@ -47,7 +46,7 @@ export default function TaraCalendar() {
           // dtstart: "2023-03-30",
           dtstart: addDays(
             periodStartDate,
-            period.duration - 1 + (period.cycle - period.duration) / 2,
+            period.duration - 1 + (period.cycle - period.duration) / 2
           ),
           until: "2025-01-01",
           freq: "daily",
@@ -64,7 +63,7 @@ export default function TaraCalendar() {
   const options = {
     plugins: [multiMonthPlugin, rrulePlugin, interactionPlugin],
     initialView: "multiMonth",
-    initialDate: "2023-01-01",
+    initialDate: getDate182DaysAgo(),
     multiMonthMaxColumns: 1,
     // initialEvents: { events },
     events: eventsToShow,
@@ -78,16 +77,16 @@ export default function TaraCalendar() {
     //   const endDate = new Date(date);
 
     //   // Adjust the start & end dates, respectively
-    //   startDate.setMonth(startDate.getMonth() - 8); // 8 month ago
+    //   startDate.setMonth(startDate.getMonth() - 6); // 6 month ago
     //   startDate.setDate(1);
-    //   endDate.setMonth(endDate.getMonth() + 8); // 8 month into the future
+    //   endDate.setMonth(endDate.getMonth() + 6); // 6 month into the future
     //   endDate.setDate(31);
 
     //   console.log("startDate: ", startDate);
 
     //   return { start: startDate, end: endDate };
     // },
-    duration: { months: 24 },
+    duration: { months: 12 },
 
     selectable: true,
     locale: "ru",
@@ -134,6 +133,16 @@ export default function TaraCalendar() {
     // const dayID = date.dayEl.attributes["aria-labelledby"].value;
     // console.log(dayID);
   };
+  function getDate182DaysAgo() {
+    const today = new Date();
+    today.setDate(today.getDate() - 182);
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+    const day = String(today.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-01`;
+  }
 
   return (
     <div className="tara-calendar module__wide">
