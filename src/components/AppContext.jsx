@@ -5,18 +5,18 @@ export const AppContext = createContext();
 
 export function AppContextProvider({ children }) {
   const [nakshatra, setNakshatra] = useState(
-    localStorage.getItem("nakshatra") || null,
+    localStorage.getItem("nakshatra") || null
   );
   const [isFemale, setIsFemale] = useState(
-    JSON.parse(localStorage.getItem("isFemale")),
+    JSON.parse(localStorage.getItem("isFemale"))
   );
 
   const [date, setDate] = useState(() => Date.now());
   const [period, setPeriod] = useState(
-    JSON.parse(localStorage.getItem("period")) || { cycle: 29, duration: 5 },
+    JSON.parse(localStorage.getItem("period")) || { cycle: 29, duration: 5 }
   );
   const [periodStartDate, setPeriodStartDate] = useState(
-    localStorage.getItem("periodStartDate") || "2023-04-20",
+    localStorage.getItem("periodStartDate") || "2023-04-20"
   );
   return (
     <AppContext.Provider

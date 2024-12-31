@@ -1,16 +1,32 @@
 import "./assets/styles.css";
-import React, { lazy, Suspense } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 // import TaraCalendar from "./components/TaraCalendar";
 // import Info from "./components/Info";
 import SettingsPanel from "./components/Settings";
+import WelcomeModal from "./components/WelcomeInfo";
 import { AppContextProvider } from "./components/AppContext";
 
 const TaraCalendar = lazy(() => import("./components/TaraCalendar"));
 const Info = lazy(() => import("./components/Info"));
 
 function App() {
+  const [isWelcomeOpen, setIsWelcomeOpen] = useState(false);
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("hasVisited");
+
+    if (!hasVisited) {
+      setIsWelcomeOpen(true);
+      localStorage.setItem("hasVisited", "true");
+    }
+  }, []);
+
+  const closeModal = () => {
+    setIsWelcomeOpen(false);
+  };
+
   return (
     <AppContextProvider>
+      <WelcomeModal isOpen={isWelcomeOpen} onClose={closeModal} />
       <SettingsPanel />
       <Suspense
         fallback={
