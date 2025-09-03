@@ -1,25 +1,18 @@
 import { ReactComponent as AddIcon } from "../assets/icons/add_FILL0_wght300_GRAD0_opsz24.svg";
 import { ReactComponent as ResetIcon } from "../assets/icons/device_reset_FILL1_wght300_GRAD0_opsz24.svg";
 import React, { useContext, useState } from "react";
-import {
-  Box,
-  Button,
-  IconButton,
-  Modal,
-  ModalDialog,
-  Typography,
-} from "@mui/joy";
+import { Box, Button, IconButton, Modal, ModalDialog, Typography } from "@mui/joy";
 import { formatDate, formatMonth } from "./utils";
-import { events } from "../data/events";
-import { events2024 } from "../data/events2024";
+// import { events2024 } from "../data/events2024";
+import { sankranti } from "../data/sankranti";
+import { events2025 } from "../data/events2025";
 import { AppContext } from "./AppContext";
 import { calendarApi } from "./TaraCalendar";
 
 export default function InfoTheDay() {
-  const { date, setDate, periodStartDate, setPeriodStartDate, isFemale } =
-    useContext(AppContext);
+  const { date, setDate, periodStartDate, setPeriodStartDate, isFemale } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
-  const mergedEvents = [...events, ...events2024];
+  const mergedEvents = [...sankranti, ...events2025];
 
   function updateTitles(date = Date.now()) {
     // console.log("boop", typeof date, date, formatDate(Date.now()));
@@ -62,9 +55,7 @@ export default function InfoTheDay() {
               onClick={() => {
                 setDate(Date.now());
                 const currentMonth = formatMonth(Date.now());
-                document
-                  .querySelector(`[data-date="${currentMonth}"]`)
-                  .scrollIntoView();
+                document.querySelector(`[data-date="${currentMonth}"]`).scrollIntoView();
               }}
             >
               <ResetIcon fill="darkseagreen" />
@@ -99,14 +90,8 @@ export default function InfoTheDay() {
           <Typography id="modal-dialog-title" level="h3">
             Отметить начало цикла?
           </Typography>
-          <Box
-            sx={{ display: "flex", gap: 1, justifyContent: "flex-end", pt: 2 }}
-          >
-            <Button
-              variant="plain"
-              color="neutral"
-              onClick={() => setIsOpen(false)}
-            >
+          <Box sx={{ display: "flex", gap: 1, justifyContent: "flex-end", pt: 2 }}>
+            <Button variant="plain" color="neutral" onClick={() => setIsOpen(false)}>
               Нет
             </Button>
             <Button

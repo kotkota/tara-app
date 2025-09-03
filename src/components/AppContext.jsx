@@ -8,7 +8,7 @@ export function AppContextProvider({ children }) {
     localStorage.getItem("nakshatra") || null
   );
   const [isFemale, setIsFemale] = useState(
-    JSON.parse(localStorage.getItem("isFemale"))
+    JSON.parse(localStorage.getItem("isFemale") || "false")
   );
 
   const [date, setDate] = useState(() => Date.now());
