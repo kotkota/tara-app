@@ -102,7 +102,7 @@ export default function InfoTheDay() {
                 setIsOpen(false);
               }}
             >
-              Отметить
+              Да
             </Button>
           </Box>
         </ModalDialog>
