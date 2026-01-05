@@ -9,8 +9,8 @@ import { AppContext } from "./AppContext";
 
 import { events } from "../data/events";
 import { sankranti } from "../data/sankranti";
-import { events2024 } from "../data/events2024";
-import { events2025 } from "../data/events2025";
+// import { events2024 } from "../data/events2024";
+// import { events2025 } from "../data/events2025";
 
 // const FullCalendar = lazy(() => import("@fullcalendar/react"));
 export let calendarApi;
@@ -19,7 +19,7 @@ export default function TaraCalendar() {
   const calendarRef = useRef();
   const { periodStartDate, isFemale, period, date, setDate } = useContext(AppContext);
 
-  let eventsToShow = [...sankranti, ...events2025];
+  let eventsToShow = [...sankranti, ...events];
   let date6MonthsAhead = new Date().setMonth(new Date().getMonth() + 6);
 
   if (isFemale)
