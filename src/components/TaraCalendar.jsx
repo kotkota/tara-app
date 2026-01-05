@@ -17,7 +17,8 @@ export let calendarApi;
 
 export default function TaraCalendar() {
   const calendarRef = useRef();
-  const { periodStartDate, isFemale, period, date, setDate } = useContext(AppContext);
+  const { periodStartDate, isFemale, period, date, setDate } =
+    useContext(AppContext);
 
   let eventsToShow = [...sankranti, ...events];
   let date6MonthsAhead = new Date().setMonth(new Date().getMonth() + 6);
@@ -46,7 +47,7 @@ export default function TaraCalendar() {
           // dtstart: "2023-03-30",
           dtstart: addDays(
             periodStartDate,
-            period.duration - 1 + (period.cycle - period.duration) / 2,
+            period.duration - 1 + (period.cycle - period.duration) / 2
           ),
           until: date6MonthsAhead,
           freq: "daily",
@@ -93,7 +94,6 @@ export default function TaraCalendar() {
     firstDay: 1,
     nextDayThreshold: "09:00:00",
     showNonCurrentDates: false,
-    eventColor: "firebrick",
     headerToolbar: {
       left: "",
       center: "",
