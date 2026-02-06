@@ -132,12 +132,6 @@ export const events = [
     classNames: "newmoon",
   },
   {
-    title: "Лунное затмение",
-    start: "2025-03-14T05:09:00Z",
-    endDate: "2025-03-14T08:47:00Z",
-    classNames: "eclipse",
-  },
-  {
     title: "Новолуние",
     start: "2026-03-19T01:23:24Z",
     endDate: "2026-03-19T01:23:24Z",
@@ -198,12 +192,6 @@ export const events = [
     classNames: "solstice",
   },
   {
-    title: "Солнечное затмение",
-    start: "2026-08-12T15:34:00Z",
-    endDate: "2026-08-12T19:57:00Z",
-    classNames: "eclipse",
-  },
-  {
     title: "Солнцестояние",
     start: "2026-06-21T08:24:31Z",
     endDate: "2026-06-21T08:24:31Z",
@@ -226,12 +214,6 @@ export const events = [
     start: "2027-02-06T15:56:02Z",
     endDate: "2027-02-06T15:56:02Z",
     classNames: "newmoon",
-  },
-  {
-    title: "Солнечное затмение",
-    start: "2025-03-29T08:50:00Z",
-    endDate: "2025-03-29T12:43:00Z",
-    classNames: "eclipse",
   },
   {
     title: "Новолуние",
@@ -294,10 +276,10 @@ export const events = [
     classNames: "fullmoon",
   },
   {
-    title: "Новолуние",
+    title: "Новолуние. Солнечное затмение",
     start: "2025-03-29T10:57:46Z",
     endDate: "2025-03-29T10:57:46Z",
-    classNames: "newmoon",
+    classNames: "newmoon eclipse",
   },
   {
     title: "Новолуние",
@@ -372,12 +354,6 @@ export const events = [
     classNames: "fullmoon",
   },
   {
-    title: "Полнолуние",
-    start: "2025-09-07T18:08:49Z",
-    endDate: "2025-09-07T18:08:49Z",
-    classNames: "fullmoon",
-  },
-  {
     title: "Новолуние",
     start: "2027-01-07T20:24:18Z",
     endDate: "2027-01-07T20:24:18Z",
@@ -396,10 +372,10 @@ export const events = [
     classNames: "fullmoon",
   },
   {
-    title: "Лунное затмение",
+    title: "Полнолуние. Лунное затмение",
     start: "2025-09-07T16:27:00Z",
     endDate: "2025-09-07T19:56:00Z",
-    classNames: "eclipse",
+    classNames: "fullmoon eclipse",
   },
   {
     title: "Новолуние",
@@ -504,10 +480,10 @@ export const events = [
     classNames: "fullmoon",
   },
   {
-    title: "Новолуние",
+    title: "Новолуние. Солнечное затмение",
     start: "2026-08-12T17:36:39Z",
     endDate: "2026-08-12T17:36:39Z",
-    classNames: "newmoon",
+    classNames: "newmoon eclipse",
   },
   {
     title: "Полнолуние",
@@ -516,10 +492,10 @@ export const events = [
     classNames: "fullmoon",
   },
   {
-    title: "Полнолуние",
+    title: "Полнолуние. Лунное затмение",
     start: "2025-03-14T06:54:35Z",
     endDate: "2025-03-14T06:54:35Z",
-    classNames: "fullmoon",
+    classNames: "fullmoon eclipse",
   },
   {
     title: "Полнолуние",
