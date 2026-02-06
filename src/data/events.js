@@ -1,9 +1,9 @@
 export const events = [
   {
-    title: "Новолуние",
+    title: "Новолуние. Солнечное затмение",
     start: "2026-02-17T12:01:04Z",
     endDate: "2026-02-17T12:01:04Z",
-    classNames: "newmoon",
+    classNames: "newmoon eclipse",
   },
   {
     title: "Полнолуние",
@@ -222,10 +222,10 @@ export const events = [
     classNames: "newmoon",
   },
   {
-    title: "Полнолуние",
+    title: "Полнолуние. Лунное затмение",
     start: "2026-08-28T04:18:26Z",
     endDate: "2026-08-28T04:18:26Z",
-    classNames: "fullmoon",
+    classNames: "fullmoon eclipse",
   },
   {
     title: "Новолуние",
@@ -450,10 +450,10 @@ export const events = [
     classNames: "fullmoon",
   },
   {
-    title: "Полнолуние",
+    title: "Полнолуние. Лунное затмение",
     start: "2026-03-03T11:37:49Z",
     endDate: "2026-03-03T11:37:49Z",
-    classNames: "fullmoon",
+    classNames: "fullmoon eclipse",
   },
   {
     title: "Полнолуние",
